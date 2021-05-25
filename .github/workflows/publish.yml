@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - master
+
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,6 +17,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
+          repo-token: ${{ secrets.NPM_TOKEN }}
       - name: Cache dependencies
         uses: actions/cache@v1
         with:
@@ -21,7 +27,12 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependincies
         run: yarn install
+      - name: Build
+        run: yarn build
       - name: Publish package
-        run: npm publish --access public
+        run: |
+          git config --global user.name "alium-official"
+          git config --global user.email "aliumswap@protonmail.com"
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
