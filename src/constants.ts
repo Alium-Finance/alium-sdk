@@ -8,10 +8,10 @@ export enum ChainId {
   BSCTESTNET = 97,
   HECOMAINNET = 128,
   HECOTESTNET = 256,
-  ETHER_MAINNET = 1,
-  ETHER_TESTNET = 3,
+  // ETHER_MAINNET = 1,
+  // ETHER_TESTNET = 3,
   MATIC_MAINNET = 128,
-  MATIC_TESTNET = 256,
+  // MATIC_TESTNET = 256,
 }
 
 export enum TradeType {
@@ -30,10 +30,10 @@ export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.BSCTESTNET]: '0x0Da3335f7F9B0f78c965046b8CF124a51548001E',
   [ChainId.HECOMAINNET]: '0x163668b3293EA61e6405eFB233abc905De1dcEF9',
   [ChainId.HECOTESTNET]: '0x45434b2c51D270BDa028c152DdDDBC1e71B7c199',
-  [ChainId.ETHER_MAINNET]: '',
-  [ChainId.ETHER_TESTNET]: '',
+  // [ChainId.ETHER_MAINNET]: '',
+  // [ChainId.ETHER_TESTNET]: '',
   [ChainId.MATIC_MAINNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
-  [ChainId.MATIC_TESTNET]: '',
+  // [ChainId.MATIC_TESTNET]: '',
 }
 
 export const INIT_CODE_HASH: { [chainId in ChainId]: string } = {
@@ -41,10 +41,10 @@ export const INIT_CODE_HASH: { [chainId in ChainId]: string } = {
   [ChainId.BSCTESTNET]: '0xa3613311aca267922aeb6751f2832294f511676a5828b307f1b58249a11ea33c',
   [ChainId.HECOMAINNET]: '0x25c1427c313ae5ef5f43f21b21e260f4e278e19616bb3c570e41c050d5b1202a',
   [ChainId.HECOTESTNET]: '0x26aeaa7c5cd0c5b4696efa6a748e93b2cfa3d3213a34d60caf9c3aa537fff8c2',
-  [ChainId.ETHER_MAINNET]: '',
-  [ChainId.ETHER_TESTNET]: '',
+  // [ChainId.ETHER_MAINNET]: '',
+  // [ChainId.ETHER_TESTNET]: '',
   [ChainId.MATIC_MAINNET]: '0xb7bada1da8d86431fed71fb759b0b9cdb841ec842f119c986fbdf10289e83584',
-  [ChainId.MATIC_TESTNET]: '',
+  // [ChainId.MATIC_TESTNET]: '',
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
