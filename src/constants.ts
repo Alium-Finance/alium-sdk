@@ -10,8 +10,8 @@ export enum ChainId {
   HECOTESTNET = 256,
   // ETHER_MAINNET = 1,
   // ETHER_TESTNET = 3,
-  MATIC_MAINNET = 128,
-  // MATIC_TESTNET = 256,
+  MATIC_MAINNET = 137,
+  // MATIC_TESTNET = 80001,
 }
 
 export enum TradeType {
