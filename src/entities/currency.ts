@@ -39,9 +39,9 @@ const BASECURRENCIES: any = {
   [ChainId.HECOMAINNET]: new Currency(18, 'HT', 'Huobi'),
   [ChainId.HECOTESTNET]: new Currency(18, 'HT', 'Huobi'),
   [ChainId.ETHER_MAINNET]: new Currency(18, 'ETH', 'Ether'),
-  // [ChainId.ETHER_TESTNET]: new Currency(18, 'ETH', 'Ether'),
+  [ChainId.ETHER_TESTNET]: new Currency(18, 'ETH', 'Ether'),
   [ChainId.MATIC_MAINNET]: new Currency(18, 'MATIC', 'Polygon'),
-  // [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
+  [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
 }
 
 const params = new URLSearchParams(window.location.search); 
