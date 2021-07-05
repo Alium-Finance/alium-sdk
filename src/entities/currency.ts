@@ -44,8 +44,8 @@ const BASECURRENCIES: any = {
   [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
 }
 
-const params = new URLSearchParams(window.location.search); 
-const id = params.get('network') as string;
+const params = (window as any)?.location?.search ? new URLSearchParams(window.location.search) : null;
+const id = params ? params.get('network') as string : ''
 
 const ETHER = id && BASECURRENCIES[id] || Currency.ETHER
 export { ETHER }
