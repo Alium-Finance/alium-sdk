@@ -1,7 +1,7 @@
 import { TradeType } from './constants'
 import invariant from 'tiny-invariant'
 import { validateAndParseAddress } from './utils'
-import { CurrencyAmount, ETHER, Percent, Trade } from './entities'
+import { CurrencyAmount, getEther, Percent, Trade } from './entities'
 
 /**
  * Options for producing the arguments to send call to the router.
@@ -65,17 +65,17 @@ export abstract class Router {
    * @param trade to produce call parameters for
    * @param options options for the call parameters
    */
-  public static swapCallParameters(trade: Trade, options: TradeOptions): SwapParameters {
-    const etherIn = trade.inputAmount.currency === ETHER
-    const etherOut = trade.outputAmount.currency === ETHER
-    // the router does not support both ether in and out
+  public static swapCallParameters(chainId: number, trade: Trade, options: TradeOptions): SwapParameters {
+    const etherIn = trade.inputAmount.currency === getEther(chainId)
+    const etherOut = trade.outputAmount.currency === getEther(chainId)
+    // the router does not support both getEther in and out
     invariant(!(etherIn && etherOut), 'ETHER_IN_OUT')
     invariant(options.ttl > 0, 'TTL')
 
     const to: string = validateAndParseAddress(options.recipient)
-    const amountIn: string = toHex(trade.maximumAmountIn(options.allowedSlippage))
-    const amountOut: string = toHex(trade.minimumAmountOut(options.allowedSlippage))
-    const path: string[] = trade.route.path.map((token) => token.address)
+    const amountIn: string = toHex(trade.maximumAmountIn(chainId, options.allowedSlippage))
+    const amountOut: string = toHex(trade.minimumAmountOut(chainId, options.allowedSlippage))
+    const path: string[] = trade.route.path.map(token => token.address)
     const deadline = `0x${(Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16)}`
     const useFeeOnTransfer = Boolean(options.feeOnTransfer)
 
@@ -126,7 +126,7 @@ export abstract class Router {
     return {
       methodName,
       args,
-      value,
+      value
     }
   }
 }

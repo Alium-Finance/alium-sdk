@@ -14,11 +14,6 @@ export class Currency {
   public readonly name?: string
 
   /**
-   * The only instance of the base class `Currency`.
-   */
-  public static readonly ETHER: Currency = new Currency(18, 'BNB', 'Binance')
-
-  /**
    * Constructs an instance of the base class `Currency`. The only instance of the base class `Currency` is `Currency.ETHER`.
    * @param decimals decimals of the currency
    * @param symbol symbol of the currency
@@ -31,6 +26,10 @@ export class Currency {
     this.symbol = symbol
     this.name = name
   }
+
+  getETHER(chainId: number) {
+    return BASECURRENCIES[chainId]
+  }
 }
 
 const BASECURRENCIES: any = {
@@ -41,14 +40,11 @@ const BASECURRENCIES: any = {
   [ChainId.ETHER_MAINNET]: new Currency(18, 'ETH', 'Ether'),
   [ChainId.ETHER_TESTNET]: new Currency(18, 'ETH', 'Ether'),
   [ChainId.MATIC_MAINNET]: new Currency(18, 'MATIC', 'Polygon'),
-  [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
+  [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon')
 }
 
-let params = null;
-if (typeof window !== "undefined") {
-  params = new URLSearchParams(window.location.search)
+const getEther = (chainId: number) => {
+  return BASECURRENCIES[chainId]
 }
-const id = params ? params.get('network') as string : ''
 
-const ETHER = id && BASECURRENCIES[id] || Currency.ETHER
-export { ETHER }
+export { getEther }

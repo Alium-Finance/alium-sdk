@@ -2,7 +2,7 @@ import invariant from 'tiny-invariant'
 
 import { ChainId, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
-import { Currency, ETHER } from './currency'
+import { Currency, getEther } from './currency'
 import { CurrencyAmount } from './fractions/currencyAmount'
 import { Fraction } from './fractions/fraction'
 import { Percent } from './fractions/percent'
@@ -84,18 +84,18 @@ export interface BestTradeOptions {
 
 /**
  * Given a currency amount and a chain ID, returns the equivalent representation as the token amount.
- * In other words, if the currency is ETHER, returns the WETH token amount for the given chain. Otherwise, returns
+ * In other words, if the currency is getEther, returns the WETH token amount for the given chain. Otherwise, returns
  * the input currency amount.
  */
 function wrappedAmount(currencyAmount: CurrencyAmount, chainId: ChainId): TokenAmount {
   if (currencyAmount instanceof TokenAmount) return currencyAmount
-  if (currencyAmount.currency === ETHER) return new TokenAmount(WETH[chainId], currencyAmount.raw)
+  if (currencyAmount.currency === getEther(chainId)) return new TokenAmount(WETH[chainId], currencyAmount.raw)
   invariant(false, 'CURRENCY')
 }
 
 function wrappedCurrency(currency: Currency, chainId: ChainId): Token {
   if (currency instanceof Token) return currency
-  if (currency === ETHER) return WETH[chainId]
+  if (currency === getEther(chainId)) return WETH[chainId]
   invariant(false, 'CURRENCY')
 }
 
@@ -138,8 +138,8 @@ export class Trade {
    * @param route route of the exact in trade
    * @param amountIn the amount being passed in
    */
-  public static exactIn(route: Route, amountIn: CurrencyAmount): Trade {
-    return new Trade(route, amountIn, TradeType.EXACT_INPUT)
+  public static exactIn(chainId: number, route: Route, amountIn: CurrencyAmount): Trade {
+    return new Trade(chainId, route, amountIn, TradeType.EXACT_INPUT)
   }
 
   /**
@@ -147,11 +147,11 @@ export class Trade {
    * @param route route of the exact out trade
    * @param amountOut the amount returned by the trade
    */
-  public static exactOut(route: Route, amountOut: CurrencyAmount): Trade {
-    return new Trade(route, amountOut, TradeType.EXACT_OUTPUT)
+  public static exactOut(chainId: number, route: Route, amountOut: CurrencyAmount): Trade {
+    return new Trade(chainId, route, amountOut, TradeType.EXACT_OUTPUT)
   }
 
-  public constructor(route: Route, amount: CurrencyAmount, tradeType: TradeType) {
+  public constructor(chainId: number, route: Route, amount: CurrencyAmount, tradeType: TradeType) {
     const amounts: TokenAmount[] = new Array(route.path.length)
     const nextPairs: Pair[] = new Array(route.pairs.length)
     if (tradeType === TradeType.EXACT_INPUT) {
@@ -179,14 +179,14 @@ export class Trade {
     this.inputAmount =
       tradeType === TradeType.EXACT_INPUT
         ? amount
-        : route.input === ETHER
-        ? CurrencyAmount.ether(amounts[0].raw)
+        : route.input === getEther(chainId)
+        ? CurrencyAmount.ether(amounts[0].raw, chainId)
         : amounts[0]
     this.outputAmount =
       tradeType === TradeType.EXACT_OUTPUT
         ? amount
-        : route.output === ETHER
-        ? CurrencyAmount.ether(amounts[amounts.length - 1].raw)
+        : route.output === getEther(chainId)
+        ? CurrencyAmount.ether(amounts[amounts.length - 1].raw, chainId)
         : amounts[amounts.length - 1]
     this.executionPrice = new Price(
       this.inputAmount.currency,
@@ -194,7 +194,7 @@ export class Trade {
       this.inputAmount.raw,
       this.outputAmount.raw
     )
-    this.nextMidPrice = Price.fromRoute(new Route(nextPairs, route.input))
+    this.nextMidPrice = Price.fromRoute(new Route(chainId, nextPairs, route.input))
     this.priceImpact = computePriceImpact(route.midPrice, this.inputAmount, this.outputAmount)
   }
 
@@ -202,7 +202,7 @@ export class Trade {
    * Get the minimum amount that must be received from this trade for the given slippage tolerance
    * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
    */
-  public minimumAmountOut(slippageTolerance: Percent): CurrencyAmount {
+  public minimumAmountOut(chainId: number, slippageTolerance: Percent): CurrencyAmount {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
     if (this.tradeType === TradeType.EXACT_OUTPUT) {
       return this.outputAmount
@@ -213,7 +213,7 @@ export class Trade {
         .multiply(this.outputAmount.raw).quotient
       return this.outputAmount instanceof TokenAmount
         ? new TokenAmount(this.outputAmount.token, slippageAdjustedAmountOut)
-        : CurrencyAmount.ether(slippageAdjustedAmountOut)
+        : CurrencyAmount.ether(slippageAdjustedAmountOut, chainId)
     }
   }
 
@@ -221,7 +221,7 @@ export class Trade {
    * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
    * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
    */
-  public maximumAmountIn(slippageTolerance: Percent): CurrencyAmount {
+  public maximumAmountIn(chainId: number, slippageTolerance: Percent): CurrencyAmount {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
     if (this.tradeType === TradeType.EXACT_INPUT) {
       return this.inputAmount
@@ -229,7 +229,7 @@ export class Trade {
       const slippageAdjustedAmountIn = new Fraction(ONE).add(slippageTolerance).multiply(this.inputAmount.raw).quotient
       return this.inputAmount instanceof TokenAmount
         ? new TokenAmount(this.inputAmount.token, slippageAdjustedAmountIn)
-        : CurrencyAmount.ether(slippageAdjustedAmountIn)
+        : CurrencyAmount.ether(slippageAdjustedAmountIn, chainId)
     }
   }
 
@@ -291,7 +291,8 @@ export class Trade {
         sortedInsert(
           bestTrades,
           new Trade(
-            new Route([...currentPairs, pair], originalAmountIn.currency, currencyOut),
+            chainId,
+            new Route(chainId, [...currentPairs, pair], originalAmountIn.currency, currencyOut),
             originalAmountIn,
             TradeType.EXACT_INPUT
           ),
@@ -308,7 +309,7 @@ export class Trade {
           currencyOut,
           {
             maxNumResults,
-            maxHops: maxHops - 1,
+            maxHops: maxHops - 1
           },
           [...currentPairs, pair],
           originalAmountIn,
@@ -379,7 +380,8 @@ export class Trade {
         sortedInsert(
           bestTrades,
           new Trade(
-            new Route([pair, ...currentPairs], currencyIn, originalAmountOut.currency),
+            chainId,
+            new Route(chainId, [pair, ...currentPairs], currencyIn, originalAmountOut.currency),
             originalAmountOut,
             TradeType.EXACT_OUTPUT
           ),
@@ -396,7 +398,7 @@ export class Trade {
           amountIn,
           {
             maxNumResults,
-            maxHops: maxHops - 1,
+            maxHops: maxHops - 1
           },
           [pair, ...currentPairs],
           originalAmountOut,
