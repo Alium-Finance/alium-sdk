@@ -27,12 +27,12 @@ export class Currency {
     this.name = name
   }
 
-  getETHER(chainId: ChainId) {
+  getETHER(chainId: number) {
     return BASECURRENCIES[chainId]
   }
 }
 
-export const BASECURRENCIES = {
+const BASECURRENCIES: any = {
   [ChainId.MAINNET]: new Currency(18, 'BNB', 'Binance'),
   [ChainId.BSCTESTNET]: new Currency(18, 'BNB', 'Binance'),
   [ChainId.HECOMAINNET]: new Currency(18, 'HT', 'Huobi'),
@@ -43,7 +43,7 @@ export const BASECURRENCIES = {
   [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon')
 }
 
-const getEther = (chainId: ChainId) => {
+const getEther = (chainId: number) => {
   return BASECURRENCIES[chainId]
 }
 

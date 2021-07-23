@@ -15,7 +15,7 @@ import {
   FIVE,
   _998,
   _1000,
-  ChainId
+  ChainId,
 } from '../constants'
 import { sqrt, parseBigintIsh } from '../utils'
 import { InsufficientReservesError, InsufficientInputAmountError } from '../errors'
@@ -31,24 +31,21 @@ export class Pair {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
     const chainId = tokenA.chainId || tokenB.chainId
 
-    if (tokens[0].address && tokens[1].address) {
-      if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
-        PAIR_ADDRESS_CACHE = {
-          ...PAIR_ADDRESS_CACHE,
-          [tokens[0].address]: {
-            ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
-            [tokens[1].address]: getCreate2Address(
-              FACTORY_ADDRESS[chainId],
-              keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-              INIT_CODE_HASH[chainId]
-            )
-          }
-        }
+    if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
+      PAIR_ADDRESS_CACHE = {
+        ...PAIR_ADDRESS_CACHE,
+        [tokens[0].address]: {
+          ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
+          [tokens[1].address]: getCreate2Address(
+            FACTORY_ADDRESS[chainId],
+            keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
+            INIT_CODE_HASH[chainId]
+          ),
+        },
       }
-
-      return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
     }
-    return ''
+
+    return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
   }
 
   public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
