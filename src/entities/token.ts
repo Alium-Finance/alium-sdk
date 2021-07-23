@@ -13,7 +13,7 @@ export class Token extends Currency {
   public constructor(chainId: ChainId, address: string, decimals: number, symbol?: string, name?: string) {
     super(decimals, symbol, name)
     this.chainId = chainId
-    this.address = validateAndParseAddress(address)
+    this.address = address && validateAndParseAddress(address)
   }
 
   /**
@@ -57,61 +57,12 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 }
 
 export const WETH = {
-  [ChainId.MAINNET]: new Token(
-    ChainId.MAINNET,
-    '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-    18,
-    'WBNB',
-    'Wrapped BNB'
-  ),
-  [ChainId.BSCTESTNET]: new Token(
-    ChainId.BSCTESTNET,
-    '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
-    18,
-    'WBNB',
-    'Wrapped BNB'
-  ),
-  [ChainId.HECOMAINNET]: new Token(
-    ChainId.HECOMAINNET,
-    '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f',
-    18,
-    'WHT',
-    'Wrapped HT'
-  ),
-  [ChainId.HECOTESTNET]: new Token(
-    ChainId.HECOTESTNET,
-    '0x7aF326B6351C8A9b8fb8CD205CBe11d4Ac5FA836',
-    18,
-    'WHT',
-    'Wrapped HT'
-  ),
-  [ChainId.MATIC_MAINNET]: new Token(
-    ChainId.MATIC_MAINNET,
-    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
-    18,
-    'WMATIC',
-    'Wrapped Matic'
-  ),
-  [ChainId.MATIC_TESTNET]: new Token(
-    ChainId.MATIC_TESTNET,
-    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
-    18,
-    'WMATIC',
-    'Wrapped Matic'
-  ),
-  [ChainId.ETHER_MAINNET]: new Token(
-    ChainId.ETHER_MAINNET,
-    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
-  [ChainId.ETHER_TESTNET]: new Token(
-    ChainId.ETHER_TESTNET,
-    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-    18,
-    'WETH',
-    'Wrapped Ether'
-  ),
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, '', 18, 'BNB', 'Binance'),
+  [ChainId.BSCTESTNET]: new Token(ChainId.BSCTESTNET, '', 18, 'BNB', 'Binance'),
+  [ChainId.HECOMAINNET]: new Token(ChainId.HECOMAINNET, '', 18, 'HT', 'Huobi'),
+  [ChainId.HECOTESTNET]: new Token(ChainId.HECOTESTNET, '', 18, 'HT', 'Huobi'),
+  [ChainId.MATIC_MAINNET]: new Token(ChainId.MATIC_MAINNET, '', 18, 'MATIC', 'Polygon'),
+  [ChainId.MATIC_TESTNET]: new Token(ChainId.MATIC_TESTNET, '', 18, 'MATIC', 'Polygon'),
+  [ChainId.ETHER_MAINNET]: new Token(ChainId.ETHER_MAINNET, '', 18, 'ETH', 'Ether'),
+  [ChainId.ETHER_TESTNET]: new Token(ChainId.ETHER_TESTNET, '', 18, 'ETH', 'Ether')
 }
-
