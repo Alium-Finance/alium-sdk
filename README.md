@@ -1,4 +1,4 @@
-# Pancakeswap SDK
+# Alium Finance SDK
 
 [![Actions Status](https://github.com/aliumswap/alium-sdk/actions/workflows/publish.yml/badge.svg)](https://github.com/aliumswap/alium-sdk)
 [![npm version](https://img.shields.io/npm/v/@aliumswap/sdk/latest.svg)](https://www.npmjs.com/package/@aliumswap/sdk/v/latest)
