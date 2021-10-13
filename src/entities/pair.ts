@@ -15,7 +15,7 @@ import {
   FIVE,
   _998,
   _1000,
-  ChainId,
+  ChainId
 } from '../constants'
 import { sqrt, parseBigintIsh } from '../utils'
 import { InsufficientReservesError, InsufficientInputAmountError } from '../errors'
@@ -40,8 +40,8 @@ export class Pair {
             FACTORY_ADDRESS[chainId],
             keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
             INIT_CODE_HASH[chainId]
-          ),
-        },
+          )
+        }
       }
     }
 
@@ -52,12 +52,16 @@ export class Pair {
     const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
       ? [tokenAmountA, tokenAmountB]
       : [tokenAmountB, tokenAmountA]
+    const token0 = tokenAmounts[0].token
+    const token1 = tokenAmounts[1].token
+    const pairName = `${token0?.symbol}-${token1?.symbol}`
+
     this.liquidityToken = new Token(
       tokenAmounts[0].token.chainId,
-      Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
+      Pair.getAddress(token0, token1),
       18,
-      'UNI-V2',
-      'Uniswap V2'
+      pairName,
+      pairName
     )
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount]
   }
