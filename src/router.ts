@@ -65,7 +65,12 @@ export abstract class Router {
    * @param trade to produce call parameters for
    * @param options options for the call parameters
    */
-  public static swapCallParameters(chainId: number, trade: Trade, options: TradeOptions): SwapParameters {
+  public static swapCallParameters(
+    chainId: number,
+    trade: Trade,
+    options: TradeOptions,
+    useSideContract: boolean
+  ): SwapParameters {
     const etherIn = trade.inputAmount.currency === getEther(chainId)
     const etherOut = trade.outputAmount.currency === getEther(chainId)
     // the router does not support both getEther in and out
@@ -73,9 +78,10 @@ export abstract class Router {
     invariant(options.ttl > 0, 'TTL')
 
     const to: string = validateAndParseAddress(options.recipient)
-    const amountIn: string = toHex(trade.maximumAmountIn(chainId, options.allowedSlippage))
-    const amountOut: string = toHex(trade.minimumAmountOut(chainId, options.allowedSlippage))
+    const amountIn: string = toHex(trade.maximumAmountIn(chainId, options.allowedSlippage, useSideContract))
+    const amountOut: string = toHex(trade.minimumAmountOut(chainId, options.allowedSlippage, useSideContract))
     const path: string[] = trade.route.path.map(token => token.address ?? '')
+
     const deadline = `0x${(Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16)}`
     const useFeeOnTransfer = Boolean(options.feeOnTransfer)
 

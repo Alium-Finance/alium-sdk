@@ -1,4 +1,5 @@
 import invariant from 'tiny-invariant'
+import { InsufficientInputAmountError, InsufficientReservesError } from '..'
 
 import { ChainId, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
@@ -89,7 +90,9 @@ export interface BestTradeOptions {
  */
 function wrappedAmount(currencyAmount: CurrencyAmount, chainId: ChainId): TokenAmount {
   if (currencyAmount instanceof TokenAmount) return currencyAmount
-  if (currencyAmount.currency === getEther(chainId)) return new TokenAmount(WETH[chainId], currencyAmount.raw)
+  if (currencyAmount.currency === getEther(chainId)) {
+    return new TokenAmount(WETH[chainId], currencyAmount.raw)
+  }
   invariant(false, 'CURRENCY')
 }
 
@@ -202,8 +205,19 @@ export class Trade {
    * Get the minimum amount that must be received from this trade for the given slippage tolerance
    * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
    */
-  public minimumAmountOut(chainId: number, slippageTolerance: Percent): CurrencyAmount {
+  public minimumAmountOut(chainId: number, slippageTolerance: Percent, useSideContract = false): CurrencyAmount {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
+
+    if (useSideContract) {
+      const value = new Fraction(ONE)
+        .add('20')
+        .invert()
+        .multiply(this.outputAmount.raw).quotient
+      return this.outputAmount instanceof TokenAmount
+        ? new TokenAmount(this.outputAmount.token, value)
+        : CurrencyAmount.ether(value, chainId)
+    }
+
     if (this.tradeType === TradeType.EXACT_OUTPUT) {
       return this.outputAmount
     } else {
@@ -221,8 +235,9 @@ export class Trade {
    * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
    * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
    */
-  public maximumAmountIn(chainId: number, slippageTolerance: Percent): CurrencyAmount {
+  public maximumAmountIn(chainId: number, slippageTolerance: Percent, useSideContract = false): CurrencyAmount {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
+
     if (this.tradeType === TradeType.EXACT_INPUT) {
       return this.inputAmount
     } else {
@@ -281,7 +296,7 @@ export class Trade {
         ;[amountOut] = pair.getOutputAmount(amountIn)
       } catch (error) {
         // input too low
-        if (error.isInsufficientInputAmountError) {
+        if ((error as InsufficientInputAmountError).isInsufficientInputAmountError) {
           continue
         }
         throw error
@@ -370,7 +385,7 @@ export class Trade {
         ;[amountIn] = pair.getInputAmount(amountOut)
       } catch (error) {
         // not enough liquidity in this pair
-        if (error.isInsufficientReservesError) {
+        if ((error as InsufficientReservesError).isInsufficientReservesError) {
           continue
         }
         throw error
