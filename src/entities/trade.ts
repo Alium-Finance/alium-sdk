@@ -235,7 +235,7 @@ export class Trade {
    * Get the maximum amount in that can be spent via this trade for the given slippage tolerance
    * @param slippageTolerance tolerance of unfavorable slippage from the execution price of this trade
    */
-  public maximumAmountIn(chainId: number, slippageTolerance: Percent, useSideContract = false): CurrencyAmount {
+  public maximumAmountIn(chainId: number, slippageTolerance: Percent, _useSideContract = false): CurrencyAmount {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
 
     if (this.tradeType === TradeType.EXACT_INPUT) {
