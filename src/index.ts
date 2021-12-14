@@ -10,6 +10,7 @@ export {
   INIT_CODE_HASH,
   ROUTER_ADDRESS,
   MINIMUM_LIQUIDITY,
+  SIDE_ROUTER_ADDRESS,
 } from './constants'
 
 export * from './errors'
