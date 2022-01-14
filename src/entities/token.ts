@@ -113,5 +113,19 @@ export const WETH = {
     'WETH',
     'Wrapped Ether'
   ),
+  [ChainId.FANTOM]: new Token(
+    ChainId.FANTOM,
+    '',
+    18,
+    'WFTM',
+    'Wrapped FTM'
+  ),
+  [ChainId.FANTOM_TESTNET]: new Token(
+    ChainId.FANTOM_TESTNET,
+    '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
+    18,
+    'WFTM',
+    'Wrapped FTM'
+  ),
 }
 
