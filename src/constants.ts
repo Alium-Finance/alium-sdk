@@ -11,7 +11,9 @@ export enum ChainId {
   ETHER_MAINNET = 1,
   ETHER_TESTNET = 4,
   MATIC_MAINNET = 137,
-  MATIC_TESTNET = 80001
+  MATIC_TESTNET = 80001,
+  FANTOM = 250,
+  FANTOM_TESTNET = 0xfa2
 }
 
 export enum TradeType {
@@ -33,7 +35,9 @@ export const FACTORY_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.ETHER_MAINNET]: '0x4D3D711853a4A25AE1D17347a97253A66Ed63D18',
   [ChainId.ETHER_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
   [ChainId.MATIC_MAINNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
-  [ChainId.MATIC_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5'
+  [ChainId.MATIC_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
+  [ChainId.FANTOM]: '',
+  [ChainId.FANTOM_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4'
 }
 
 export const INIT_CODE_HASH: { [chainId in ChainId]: string } = {
@@ -44,7 +48,9 @@ export const INIT_CODE_HASH: { [chainId in ChainId]: string } = {
   [ChainId.ETHER_MAINNET]: '0xdd99d07028f84ee171febb84ed2cae17b5de5c666e44f5ddc82ddb80596bb266',
   [ChainId.ETHER_TESTNET]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
   [ChainId.MATIC_MAINNET]: '0xb7bada1da8d86431fed71fb759b0b9cdb841ec842f119c986fbdf10289e83584',
-  [ChainId.MATIC_TESTNET]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92'
+  [ChainId.MATIC_TESTNET]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
+  [ChainId.FANTOM]: '',
+  [ChainId.FANTOM_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416'
 }
 
 export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
@@ -55,7 +61,9 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.ETHER_MAINNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
   [ChainId.ETHER_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
   [ChainId.MATIC_MAINNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
-  [ChainId.MATIC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3'
+  [ChainId.MATIC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
+  [ChainId.FANTOM]: '',
+  [ChainId.FANTOM_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63'
 }
 
 export const SIDE_ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
@@ -66,7 +74,9 @@ export const SIDE_ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.ETHER_MAINNET]: '',
   [ChainId.ETHER_TESTNET]: '',
   [ChainId.MATIC_MAINNET]: '',
-  [ChainId.MATIC_TESTNET]: ''
+  [ChainId.MATIC_TESTNET]: '',
+  [ChainId.FANTOM]: '',
+  [ChainId.FANTOM_TESTNET]: ''
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
