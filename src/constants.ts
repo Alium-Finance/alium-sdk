@@ -67,7 +67,7 @@ export const ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
 }
 
 export const SIDE_ROUTER_ADDRESS: { [chainId in ChainId]: string } = {
-  [ChainId.MAINNET]: '',
+  [ChainId.MAINNET]: '0x591575579D607c8BDC5E1F15f1aa443FD5e5510a',
   [ChainId.BSCTESTNET]: '0x367a7567Dcca0944795BdE06Ab2a970b7139368A',
   [ChainId.HECOMAINNET]: '',
   [ChainId.HECOTESTNET]: '',
