@@ -11,8 +11,8 @@ import { Token } from './entities/token'
 
 let TOKEN_DECIMALS_CACHE: { [chainId: number]: { [address: string]: number } } = {
   [ChainId.MAINNET]: {
-    '0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A': 9, // DGD
-  },
+    '0xE0B7927c4aF23765Cb51314A0E0521A9645F0E2A': 9 // DGD
+  }
 }
 
 /**
@@ -47,8 +47,8 @@ export abstract class Fetcher {
               ...TOKEN_DECIMALS_CACHE,
               [chainId]: {
                 ...TOKEN_DECIMALS_CACHE?.[chainId],
-                [address]: decimals,
-              },
+                [address]: decimals
+              }
             }
             return decimals
           })
@@ -64,12 +64,13 @@ export abstract class Fetcher {
   public static async fetchPairData(
     tokenA: Token,
     tokenB: Token,
-    provider = getDefaultProvider(getNetwork(tokenA.chainId))
+    provider = getDefaultProvider(getNetwork(tokenA.chainId)),
+    factoryAddress: string
   ): Promise<Pair> {
     invariant(tokenA.chainId === tokenB.chainId, 'CHAIN_ID')
-    const address = Pair.getAddress(tokenA, tokenB)
+    const address = Pair.getAddress(tokenA, tokenB, factoryAddress)
     const [reserves0, reserves1] = await new Contract(address, IPancakePair, provider).getReserves()
     const balances = tokenA.sortsBefore(tokenB) ? [reserves0, reserves1] : [reserves1, reserves0]
-    return new Pair(new TokenAmount(tokenA, balances[0]), new TokenAmount(tokenB, balances[1]))
+    return new Pair(new TokenAmount(tokenA, balances[0]), new TokenAmount(tokenB, balances[1]), factoryAddress)
   }
 }
