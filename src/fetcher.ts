@@ -65,12 +65,18 @@ export abstract class Fetcher {
     tokenA: Token,
     tokenB: Token,
     provider = getDefaultProvider(getNetwork(tokenA.chainId)),
-    factoryAddress: string
+    factoryAddress: string,
+    initCodeHash: string
   ): Promise<Pair> {
     invariant(tokenA.chainId === tokenB.chainId, 'CHAIN_ID')
-    const address = Pair.getAddress(tokenA, tokenB, factoryAddress)
+    const address = Pair.getAddress(tokenA, tokenB, factoryAddress, initCodeHash)
     const [reserves0, reserves1] = await new Contract(address, IPancakePair, provider).getReserves()
     const balances = tokenA.sortsBefore(tokenB) ? [reserves0, reserves1] : [reserves1, reserves0]
-    return new Pair(new TokenAmount(tokenA, balances[0]), new TokenAmount(tokenB, balances[1]), factoryAddress)
+    return new Pair(
+      new TokenAmount(tokenA, balances[0]),
+      new TokenAmount(tokenB, balances[1]),
+      factoryAddress,
+      initCodeHash
+    )
   }
 }
