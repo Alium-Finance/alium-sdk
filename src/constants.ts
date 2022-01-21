@@ -28,7 +28,7 @@ export enum Rounding {
 }
 
 export type ExchangeConfigT = {
-  [key in 'alium' | 'cake']: {
+  [key in 'alium' | 'side']: {
     router: { [key in ChainId]: string }
     factory: { [key in ChainId]: string }
     initCodeHash: { [key in ChainId]: string }
@@ -46,7 +46,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.ETHER_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.MATIC_MAINNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.MATIC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
-      [ChainId.FANTOM]: '',
+      [ChainId.FANTOM]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.FANTOM_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63'
     },
     factory: {
@@ -58,7 +58,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.ETHER_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.MATIC_MAINNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.MATIC_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
-      [ChainId.FANTOM]: '',
+      [ChainId.FANTOM]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.FANTOM_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4'
     },
     initCodeHash: {
@@ -70,11 +70,11 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.ETHER_TESTNET]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
       [ChainId.MATIC_MAINNET]: '0xb7bada1da8d86431fed71fb759b0b9cdb841ec842f119c986fbdf10289e83584',
       [ChainId.MATIC_TESTNET]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
-      [ChainId.FANTOM]: '',
+      [ChainId.FANTOM]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.FANTOM_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416'
     }
   },
-  cake: {
+  side: {
     router: {
       [ChainId.MAINNET]: '0x591575579D607c8BDC5E1F15f1aa443FD5e5510a',
       [ChainId.BSCTESTNET]: '0x367a7567Dcca0944795BdE06Ab2a970b7139368A',
@@ -84,7 +84,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.ETHER_TESTNET]: '',
       [ChainId.MATIC_MAINNET]: '',
       [ChainId.MATIC_TESTNET]: '',
-      [ChainId.FANTOM]: '',
+      [ChainId.FANTOM]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.FANTOM_TESTNET]: ''
     },
     factory: {
@@ -96,7 +96,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.ETHER_TESTNET]: '',
       [ChainId.MATIC_MAINNET]: '',
       [ChainId.MATIC_TESTNET]: '',
-      [ChainId.FANTOM]: '',
+      [ChainId.FANTOM]: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3',
       [ChainId.FANTOM_TESTNET]: ''
     },
     initCodeHash: {
@@ -108,7 +108,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.ETHER_TESTNET]: '',
       [ChainId.MATIC_MAINNET]: '',
       [ChainId.MATIC_TESTNET]: '',
-      [ChainId.FANTOM]: '',
+      [ChainId.FANTOM]: '0xcdf2deca40a0bd56de8e3ce5c7df6727e5b1bf2ac96f283fa9c4b3e6b42ea9d2',
       [ChainId.FANTOM_TESTNET]: ''
     }
   }
