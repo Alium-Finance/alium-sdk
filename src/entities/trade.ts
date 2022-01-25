@@ -101,6 +101,15 @@ function wrappedCurrency(currency: Currency, chainId: ChainId): Token {
   if (currency === getEther(chainId)) return WETH[chainId]
   invariant(false, 'CURRENCY')
 }
+/**
+ * Config for linking addresses to trade
+ */
+
+interface ExchangeOptions {
+  router: string
+  factory: string
+  initCodeHash: string
+}
 
 /**
  * Represents a trade executed against a list of pairs.
@@ -135,20 +144,18 @@ export class Trade {
    * The percent difference between the mid price before the trade and the trade execution price.
    */
   public readonly priceImpact: Percent
+  /**
+   * The config for trade
+   */
+  public readonly config: ExchangeOptions
 
   /**
    * Constructs an exact in trade with the given amount in and route
    * @param route route of the exact in trade
    * @param amountIn the amount being passed in
    */
-  public static exactIn(
-    chainId: number,
-    route: Route,
-    amountIn: CurrencyAmount,
-    factoryAddress: string,
-    initCodeHash: string
-  ): Trade {
-    return new Trade(chainId, route, amountIn, TradeType.EXACT_INPUT, factoryAddress, initCodeHash)
+  public static exactIn(chainId: number, route: Route, amountIn: CurrencyAmount, config: ExchangeOptions): Trade {
+    return new Trade(chainId, route, amountIn, TradeType.EXACT_INPUT, config)
   }
 
   /**
@@ -156,14 +163,8 @@ export class Trade {
    * @param route route of the exact out trade
    * @param amountOut the amount returned by the trade
    */
-  public static exactOut(
-    chainId: number,
-    route: Route,
-    amountOut: CurrencyAmount,
-    factoryAddress: string,
-    initCodeHash: string
-  ): Trade {
-    return new Trade(chainId, route, amountOut, TradeType.EXACT_OUTPUT, factoryAddress, initCodeHash)
+  public static exactOut(chainId: number, route: Route, amountOut: CurrencyAmount, config: ExchangeOptions): Trade {
+    return new Trade(chainId, route, amountOut, TradeType.EXACT_OUTPUT, config)
   }
 
   public constructor(
@@ -171,8 +172,7 @@ export class Trade {
     route: Route,
     amount: CurrencyAmount,
     tradeType: TradeType,
-    factoryAddress: string,
-    initCodeHash: string
+    config: ExchangeOptions
   ) {
     const amounts: TokenAmount[] = new Array(route.path.length)
     const nextPairs: Pair[] = new Array(route.pairs.length)
@@ -181,7 +181,7 @@ export class Trade {
       amounts[0] = wrappedAmount(amount, route.chainId)
       for (let i = 0; i < route.path.length - 1; i++) {
         const pair = route.pairs[i]
-        const [outputAmount, nextPair] = pair.getOutputAmount(amounts[i], factoryAddress, initCodeHash)
+        const [outputAmount, nextPair] = pair.getOutputAmount(amounts[i], config.factory, config.initCodeHash)
         amounts[i + 1] = outputAmount
         nextPairs[i] = nextPair
       }
@@ -190,7 +190,7 @@ export class Trade {
       amounts[amounts.length - 1] = wrappedAmount(amount, route.chainId)
       for (let i = route.path.length - 1; i > 0; i--) {
         const pair = route.pairs[i - 1]
-        const [inputAmount, nextPair] = pair.getInputAmount(amounts[i], factoryAddress, initCodeHash)
+        const [inputAmount, nextPair] = pair.getInputAmount(amounts[i], config.factory, config.initCodeHash)
         amounts[i - 1] = inputAmount
         nextPairs[i - 1] = nextPair
       }
@@ -218,6 +218,7 @@ export class Trade {
     )
     this.nextMidPrice = Price.fromRoute(new Route(chainId, nextPairs, route.input))
     this.priceImpact = computePriceImpact(route.midPrice, this.inputAmount, this.outputAmount)
+    this.config = config
   }
 
   /**
@@ -290,8 +291,7 @@ export class Trade {
     currentPairs: Pair[] = [],
     originalAmountIn: CurrencyAmount = currencyAmountIn,
     bestTrades: Trade[] = [],
-    factoryAddress: string,
-    initCodeHash: string
+    config: ExchangeOptions
   ): Trade[] {
     invariant(pairs.length > 0, 'PAIRS')
     invariant(maxHops > 0, 'MAX_HOPS')
@@ -314,7 +314,7 @@ export class Trade {
 
       let amountOut: TokenAmount
       try {
-        ;[amountOut] = pair.getOutputAmount(amountIn, factoryAddress, initCodeHash)
+        ;[amountOut] = pair.getOutputAmount(amountIn, config.factory, config.initCodeHash)
       } catch (error) {
         // input too low
         if ((error as InsufficientInputAmountError).isInsufficientInputAmountError) {
@@ -331,8 +331,7 @@ export class Trade {
             new Route(chainId, [...currentPairs, pair], originalAmountIn.currency, currencyOut),
             originalAmountIn,
             TradeType.EXACT_INPUT,
-            factoryAddress,
-            initCodeHash
+            config
           ),
           maxNumResults,
           tradeComparator
@@ -352,8 +351,7 @@ export class Trade {
           [...currentPairs, pair],
           originalAmountIn,
           bestTrades,
-          factoryAddress,
-          initCodeHash
+          config
         )
       }
     }
@@ -385,8 +383,7 @@ export class Trade {
     currentPairs: Pair[] = [],
     originalAmountOut: CurrencyAmount = currencyAmountOut,
     bestTrades: Trade[] = [],
-    factoryAddress: string,
-    initCodeHash: string
+    config: ExchangeOptions
   ): Trade[] {
     invariant(pairs.length > 0, 'PAIRS')
     invariant(maxHops > 0, 'MAX_HOPS')
@@ -409,7 +406,7 @@ export class Trade {
 
       let amountIn: TokenAmount
       try {
-        ;[amountIn] = pair.getInputAmount(amountOut, factoryAddress, initCodeHash)
+        ;[amountIn] = pair.getInputAmount(amountOut, config.factory, config.initCodeHash)
       } catch (error) {
         // not enough liquidity in this pair
         if ((error as InsufficientReservesError).isInsufficientReservesError) {
@@ -426,8 +423,7 @@ export class Trade {
             new Route(chainId, [pair, ...currentPairs], currencyIn, originalAmountOut.currency),
             originalAmountOut,
             TradeType.EXACT_OUTPUT,
-            factoryAddress,
-            initCodeHash
+            config
           ),
           maxNumResults,
           tradeComparator
@@ -447,8 +443,7 @@ export class Trade {
           [pair, ...currentPairs],
           originalAmountOut,
           bestTrades,
-          factoryAddress,
-          initCodeHash
+          config
         )
       }
     }
