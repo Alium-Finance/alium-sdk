@@ -1,7 +1,7 @@
 import invariant from 'tiny-invariant'
 import { InsufficientInputAmountError, InsufficientReservesError } from '..'
 
-import { ChainId, ONE, TradeType, ZERO } from '../constants'
+import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
 import { Currency, getEther } from './currency'
 import { CurrencyAmount } from './fractions/currencyAmount'
@@ -105,10 +105,11 @@ function wrappedCurrency(currency: Currency, chainId: ChainId): Token {
  * Config for linking addresses to trade
  */
 
-interface ExchangeOptions {
+export interface ExchangeOptions {
   router: string
   factory: string
   initCodeHash: string
+  type: keyof ExchangeConfigT
 }
 
 /**
