@@ -1,7 +1,7 @@
 import { TradeType } from './constants'
 import invariant from 'tiny-invariant'
 import { validateAndParseAddress } from './utils'
-import { CurrencyAmount, getEther, Percent, Trade } from './entities'
+import { CurrencyAmount, ExchangeOptions, getEther, Percent, Trade } from './entities'
 
 /**
  * Options for producing the arguments to send call to the router.
@@ -69,7 +69,7 @@ export abstract class Router {
     chainId: number,
     trade: Trade,
     options: TradeOptions,
-    useSideContract: boolean
+    type: ExchangeOptions['type']
   ): SwapParameters {
     const etherIn = trade.inputAmount.currency === getEther(chainId)
     const etherOut = trade.outputAmount.currency === getEther(chainId)
@@ -77,9 +77,10 @@ export abstract class Router {
     invariant(!(etherIn && etherOut), 'ETHER_IN_OUT')
     invariant(options.ttl > 0, 'TTL')
 
+    const isSide = type !== 'alium'
     const to: string = validateAndParseAddress(options.recipient)
-    const amountIn: string = toHex(trade.maximumAmountIn(chainId, options.allowedSlippage, useSideContract))
-    const amountOut: string = toHex(trade.minimumAmountOut(chainId, options.allowedSlippage, useSideContract))
+    const amountIn: string = toHex(trade.maximumAmountIn(chainId, options.allowedSlippage, isSide))
+    const amountOut: string = toHex(trade.minimumAmountOut(chainId, options.allowedSlippage, isSide))
     const path: string[] = trade.route.path.map(token => token.address ?? '')
 
     const deadline = `0x${(Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16)}`
