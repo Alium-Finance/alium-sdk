@@ -285,8 +285,8 @@ export class Trade {
    */
   public static bestTradeExactIn(
     pairs: Pair[],
-    currencyAmountIn: CurrencyAmount,
     currencyOut: Currency,
+    currencyAmountIn: CurrencyAmount,
     { maxNumResults = 3, maxHops = 3 }: BestTradeOptions = {},
     // used in recursion.
     currentPairs: Pair[] = [],
@@ -343,8 +343,8 @@ export class Trade {
         // otherwise, consider all the other paths that lead from this token as long as we have not exceeded maxHops
         Trade.bestTradeExactIn(
           pairsExcludingThisPair,
-          amountOut,
           currencyOut,
+          amountOut,
           {
             maxNumResults,
             maxHops: maxHops - 1
