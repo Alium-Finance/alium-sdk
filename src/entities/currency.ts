@@ -41,7 +41,7 @@ const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.ETHER_TESTNET]: new Currency(18, 'ETH', 'Ether'),
   [ChainId.MATIC_MAINNET]: new Currency(18, 'MATIC', 'Polygon'),
   [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
-  [ChainId.FANTOM]: new Currency(18, 'FTM', 'Fantom'),
+  [ChainId.FANTOM]: new Currency(6, 'FTM', 'Fantom'),
   [ChainId.FANTOM_TESTNET]: new Currency(18, 'FTM', 'Fantom')
 }
 
