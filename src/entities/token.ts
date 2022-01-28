@@ -56,7 +56,7 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
   }
 }
 
-export const WETH = {
+export const WETH: { [key in ChainId]: Token } = {
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
@@ -120,5 +120,19 @@ export const WETH = {
     18,
     'WFTM',
     'Wrapped FTM'
+  ),
+  [ChainId.METIS]: new Token(
+    ChainId.METIS,
+    '0x75cb093E4D61d2A2e65D8e0BBb01DE8d89b53481',
+    18,
+    'WMETIS',
+    'Wrapped METIS'
+  ),
+  [ChainId.METIC_TESTNET]: new Token(
+    ChainId.METIC_TESTNET,
+    '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
+    18,
+    'WMETIS',
+    'Wrapped METIS'
   )
 }

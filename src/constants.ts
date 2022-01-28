@@ -12,6 +12,8 @@ export enum ChainId {
   ETHER_TESTNET = 4,
   MATIC_MAINNET = 137,
   MATIC_TESTNET = 80001,
+  METIS = 1088,
+  METIC_TESTNET = 588,
   FANTOM = 250,
   FANTOM_TESTNET = 0xfa2
 }
@@ -47,7 +49,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MATIC_MAINNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.MATIC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.FANTOM]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
-      [ChainId.FANTOM_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63'
+      [ChainId.FANTOM_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
+      [ChainId.METIS]: '',
+      [ChainId.METIC_TESTNET]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11'
     },
     factory: {
       [ChainId.MAINNET]: '0xbEAC7e750728e865A3cb39D5ED6E3A3044ae4B98',
@@ -59,7 +63,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MATIC_MAINNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.MATIC_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.FANTOM]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
-      [ChainId.FANTOM_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4'
+      [ChainId.FANTOM_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
+      [ChainId.METIS]: '',
+      [ChainId.METIC_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63'
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x25c1427c313ae5ef5f43f21b21e260f4e278e19616bb3c570e41c050d5b1202a',
@@ -71,7 +77,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MATIC_MAINNET]: '0xb7bada1da8d86431fed71fb759b0b9cdb841ec842f119c986fbdf10289e83584',
       [ChainId.MATIC_TESTNET]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
       [ChainId.FANTOM]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
-      [ChainId.FANTOM_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416'
+      [ChainId.FANTOM_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416',
+      [ChainId.METIS]: '',
+      [ChainId.METIC_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416'
     }
   },
   side: {
@@ -85,7 +93,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MATIC_MAINNET]: '',
       [ChainId.MATIC_TESTNET]: '',
       [ChainId.FANTOM]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
-      [ChainId.FANTOM_TESTNET]: ''
+      [ChainId.FANTOM_TESTNET]: '',
+      [ChainId.METIS]: '',
+      [ChainId.METIC_TESTNET]: ''
     },
     factory: {
       [ChainId.MAINNET]: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
@@ -97,7 +107,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MATIC_MAINNET]: '',
       [ChainId.MATIC_TESTNET]: '',
       [ChainId.FANTOM]: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3',
-      [ChainId.FANTOM_TESTNET]: ''
+      [ChainId.FANTOM_TESTNET]: '',
+      [ChainId.METIS]: '',
+      [ChainId.METIC_TESTNET]: ''
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
@@ -109,7 +121,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MATIC_MAINNET]: '',
       [ChainId.MATIC_TESTNET]: '',
       [ChainId.FANTOM]: '0xcdf2deca40a0bd56de8e3ce5c7df6727e5b1bf2ac96f283fa9c4b3e6b42ea9d2',
-      [ChainId.FANTOM_TESTNET]: ''
+      [ChainId.FANTOM_TESTNET]: '',
+      [ChainId.METIS]: '',
+      [ChainId.METIC_TESTNET]: ''
     }
   }
 }
@@ -124,7 +138,9 @@ export const MULTICALL_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MATIC_MAINNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
   [ChainId.MATIC_TESTNET]: '0x1b1CD5E15C1d0E84cbffF8F7Df514e4f90031FdC',
   [ChainId.FANTOM]: '0xBAD2B082e2212DE4B065F636CA4e5e0717623d18',
-  [ChainId.FANTOM_TESTNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18'
+  [ChainId.FANTOM_TESTNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
+  [ChainId.METIS]: '',
+  [ChainId.METIC_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4'
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
