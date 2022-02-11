@@ -229,22 +229,12 @@ export class Trade {
   public minimumAmountOut(chainId: number, slippageTolerance: Percent, useSideContract = false): CurrencyAmount {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
 
-    if (useSideContract) {
-      const slippageHigh = slippageTolerance?.add('20')
-      const value = new Fraction(ONE)
-        .add(slippageHigh)
-        .invert()
-        .multiply(this.outputAmount.raw).quotient
-      return this.outputAmount instanceof TokenAmount
-        ? new TokenAmount(this.outputAmount.token, value)
-        : CurrencyAmount.ether(value, chainId)
-    }
-
     if (this.tradeType === TradeType.EXACT_OUTPUT) {
       return this.outputAmount
     } else {
+      const slippage = useSideContract ? slippageTolerance?.add('20') : slippageTolerance
       const slippageAdjustedAmountOut = new Fraction(ONE)
-        .add(slippageTolerance)
+        .add(slippage)
         .invert()
         .multiply(this.outputAmount.raw).quotient
       return this.outputAmount instanceof TokenAmount
