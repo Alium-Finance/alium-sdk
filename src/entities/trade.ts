@@ -230,8 +230,9 @@ export class Trade {
     invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
 
     if (useSideContract) {
+      const slippageHigh = slippageTolerance?.add('20')
       const value = new Fraction(ONE)
-        .add('20')
+        .add(slippageHigh)
         .invert()
         .multiply(this.outputAmount.raw).quotient
       return this.outputAmount instanceof TokenAmount
