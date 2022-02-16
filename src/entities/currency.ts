@@ -1,3 +1,4 @@
+import { Token } from './token'
 import JSBI from 'jsbi'
 
 import { ChainId, SolidityType } from '../constants'
@@ -43,8 +44,8 @@ export const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
   [ChainId.FANTOM]: new Currency(18, 'FTM', 'Fantom'),
   [ChainId.FANTOM_TESTNET]: new Currency(18, 'FTM', 'Fantom'),
-  [ChainId.METIS]: new Currency(18, 'METIS', 'METIS'),
-  [ChainId.METIC_TESTNET]: new Currency(18, 'METIS', 'METIS'),
+  [ChainId.METIS]: new Token(ChainId.METIS, '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000', 18, 'METIS', 'METIS'),
+  [ChainId.METIC_TESTNET]: new Currency(18, 'METIS', 'METIS')
 }
 
 const getEther = (chainId: ChainId) => {
