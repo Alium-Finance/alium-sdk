@@ -1,9 +1,9 @@
 import invariant from 'tiny-invariant'
-import { InsufficientInputAmountError, InsufficientReservesError } from '..'
+import { getEther, InsufficientInputAmountError, InsufficientReservesError } from '..'
 
 import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
-import { Currency, getEther } from './currency'
+import { Currency } from './currency'
 import { CurrencyAmount } from './fractions/currencyAmount'
 import { Fraction } from './fractions/fraction'
 import { Percent } from './fractions/percent'

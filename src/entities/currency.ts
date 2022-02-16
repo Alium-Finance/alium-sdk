@@ -1,7 +1,5 @@
-import { Token } from './token'
 import JSBI from 'jsbi'
-
-import { ChainId, SolidityType } from '../constants'
+import { SolidityType } from '../constants'
 import { validateSolidityTypeInstance } from '../utils'
 
 /**
@@ -27,29 +25,4 @@ export class Currency {
     this.symbol = symbol
     this.name = name
   }
-
-  getETHER(chainId: ChainId) {
-    return BASECURRENCIES[chainId]
-  }
 }
-
-export const BASECURRENCIES: { [key in ChainId]: Currency } = {
-  [ChainId.MAINNET]: new Currency(18, 'BNB', 'Binance'),
-  [ChainId.BSCTESTNET]: new Currency(18, 'BNB', 'Binance'),
-  [ChainId.HECOMAINNET]: new Currency(18, 'HT', 'Huobi'),
-  [ChainId.HECOTESTNET]: new Currency(18, 'HT', 'Huobi'),
-  [ChainId.ETHER_MAINNET]: new Currency(18, 'ETH', 'Ether'),
-  [ChainId.ETHER_TESTNET]: new Currency(18, 'ETH', 'Ether'),
-  [ChainId.MATIC_MAINNET]: new Currency(18, 'MATIC', 'Polygon'),
-  [ChainId.MATIC_TESTNET]: new Currency(18, 'MATIC', 'Polygon'),
-  [ChainId.FANTOM]: new Currency(18, 'FTM', 'Fantom'),
-  [ChainId.FANTOM_TESTNET]: new Currency(18, 'FTM', 'Fantom'),
-  [ChainId.METIS]: new Token(ChainId.METIS, '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000', 18, 'METIS', 'METIS'),
-  [ChainId.METIC_TESTNET]: new Currency(18, 'METIS', 'METIS')
-}
-
-const getEther = (chainId: ChainId) => {
-  return BASECURRENCIES[chainId]
-}
-
-export { getEther }
