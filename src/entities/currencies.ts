@@ -1,6 +1,6 @@
 import { ChainId, Currency, Token } from '..'
 
-export const BASECURRENCIES: { [key in ChainId]: Currency } = {
+const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.MAINNET]: new Currency(18, 'BNB', 'Binance'),
   [ChainId.BSCTESTNET]: new Currency(18, 'BNB', 'Binance'),
   [ChainId.HECOMAINNET]: new Currency(18, 'HT', 'Huobi'),
@@ -20,4 +20,4 @@ const getEther = (chainId: ChainId) => {
   return BASECURRENCIES[chainId]
 }
 
-export { getEther }
+export { getEther, BASECURRENCIES }
