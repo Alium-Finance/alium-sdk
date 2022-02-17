@@ -12,7 +12,8 @@ export const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.FANTOM]: new Currency(18, 'FTM', 'Fantom'),
   [ChainId.FANTOM_TESTNET]: new Currency(18, 'FTM', 'Fantom'),
   [ChainId.METIS]: new Token(ChainId.METIS, '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000', 18, 'METIS', 'METIS'),
-  [ChainId.METIC_TESTNET]: new Currency(18, 'METIS', 'METIS')
+  [ChainId.METIC_TESTNET]: new Currency(18, 'METIS', 'METIS'),
+  [ChainId.MOONRIVER_TESTNET]: new Currency(18, 'DEV', 'DEV')
 }
 
 const getEther = (chainId: ChainId) => {

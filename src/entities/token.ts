@@ -134,5 +134,12 @@ export const WETH: { [key in ChainId]: Token } = {
     18,
     'WMETIS',
     'Wrapped METIS'
+  ),
+  [ChainId.MOONRIVER_TESTNET]: new Token(
+    ChainId.MOONRIVER_TESTNET,
+    '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
+    18,
+    'WDEV',
+    'Wrapped DEV'
   )
 }
