@@ -16,7 +16,10 @@ export enum ChainId {
   METIC_TESTNET = 588,
   FANTOM = 250,
   FANTOM_TESTNET = 0xfa2,
-  MOONRIVER_TESTNET = 1287
+  MOONRIVER = 1285,
+  MOONRIVER_TESTNET = 1287,
+  AURORA = 1313161554,
+  AURORA_TESTNET = 1313161555
 }
 
 export enum TradeType {
@@ -53,7 +56,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
       [ChainId.METIS]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.METIC_TESTNET]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11',
-      [ChainId.MOONRIVER_TESTNET]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11'
+      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER_TESTNET]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11',
+      [ChainId.AURORA]: '',
+      [ChainId.AURORA_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63'
     },
     factory: {
       [ChainId.MAINNET]: '0xbEAC7e750728e865A3cb39D5ED6E3A3044ae4B98',
@@ -68,7 +74,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.METIS]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.METIC_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
-      [ChainId.MOONRIVER_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63'
+      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
+      [ChainId.AURORA]: '',
+      [ChainId.AURORA_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3'
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x25c1427c313ae5ef5f43f21b21e260f4e278e19616bb3c570e41c050d5b1202a',
@@ -83,7 +92,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416',
       [ChainId.METIS]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.METIC_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416',
-      [ChainId.MOONRIVER_TESTNET]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055'
+      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER_TESTNET]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
+      [ChainId.AURORA]: '',
+      [ChainId.AURORA_TESTNET]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055'
     }
   },
   side: {
@@ -100,7 +112,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '',
       [ChainId.METIS]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11',
       [ChainId.METIC_TESTNET]: '',
-      [ChainId.MOONRIVER_TESTNET]: ''
+      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER_TESTNET]: '',
+      [ChainId.AURORA]: '',
+      [ChainId.AURORA_TESTNET]: ''
     },
     factory: {
       [ChainId.MAINNET]: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
@@ -115,7 +130,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '',
       [ChainId.METIS]: '0x70f51d68D16e8f9e418441280342BD43AC9Dff9f',
       [ChainId.METIC_TESTNET]: '',
-      [ChainId.MOONRIVER_TESTNET]: ''
+      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER_TESTNET]: '',
+      [ChainId.AURORA]: '',
+      [ChainId.AURORA_TESTNET]: ''
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
@@ -130,7 +148,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '',
       [ChainId.METIS]: '0x966d65068a6a30f10fd1fa814258637a34e059081d79daa94f3e2b6cec48e810',
       [ChainId.METIC_TESTNET]: '',
-      [ChainId.MOONRIVER_TESTNET]: ''
+      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER_TESTNET]: '',
+      [ChainId.AURORA]: '',
+      [ChainId.AURORA_TESTNET]: ''
     }
   }
 }
@@ -148,7 +169,10 @@ export const MULTICALL_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.FANTOM_TESTNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
   [ChainId.METIS]: '0x999c891262ce01f1C1AFD1D46260E4c1E508B243',
   [ChainId.METIC_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
-  [ChainId.MOONRIVER_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3'
+  [ChainId.MOONRIVER]: '',
+  [ChainId.MOONRIVER_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
+  [ChainId.AURORA]: '',
+  [ChainId.AURORA_TESTNET]: ''
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
