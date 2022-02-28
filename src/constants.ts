@@ -172,7 +172,7 @@ export const MULTICALL_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONRIVER]: '',
   [ChainId.MOONRIVER_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
   [ChainId.AURORA]: '',
-  [ChainId.AURORA_TESTNET]: ''
+  [ChainId.AURORA_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5'
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
