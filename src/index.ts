@@ -8,7 +8,8 @@ export {
   Rounding,
   EXCHANGE_CONFIG,
   MINIMUM_LIQUIDITY,
-  MULTICALL_ADDRESS
+  MULTICALL_ADDRESS,
+  LIQUIDITY_MIGRATOR_ADDRESS
 } from './constants'
 
 export * from './errors'
