@@ -95,9 +95,9 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416',
       [ChainId.METIS]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.METIC_TESTNET]: '0x4c973f128ac0da381d093ea6b96b13de76b671a930ea4e5bdb93495d635a1416',
-      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.MOONBASE_ALPHA]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
-      [ChainId.MOONBEAM]: '',
+      [ChainId.MOONBEAM]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.AURORA]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.AURORA_TESTNET]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055'
     }
