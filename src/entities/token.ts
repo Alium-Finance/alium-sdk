@@ -158,7 +158,7 @@ export const WETH: { [key in ChainId]: Token } = {
   ),
   [ChainId.AURORA]: new Token(
     ChainId.AURORA,
-    '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
+    '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
     18,
     'WDEV',
     'Wrapped DEV'
