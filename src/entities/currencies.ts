@@ -14,7 +14,7 @@ const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.METIS]: new Token(ChainId.METIS, '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000', 18, 'METIS', 'METIS'),
   [ChainId.METIC_TESTNET]: new Currency(18, 'METIS', 'METIS'),
   [ChainId.MOONRIVER]: new Currency(18, 'MOVR', 'MOVR'),
-  [ChainId.MOONBASE_ALPHA]: new Currency(18, 'DEV', 'DEV'),
+  [ChainId.MOONBASE_ALPHA]: new Currency(18, 'MOVR', 'MOVR'),
   [ChainId.MOONBEAM]: new Currency(18, 'GLMR', 'GLMR'),
   [ChainId.AURORA]: new Currency(18, 'aETH', 'aETH'),
   [ChainId.AURORA_TESTNET]: new Currency(18, 'aETH', 'aETH'),
