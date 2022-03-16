@@ -137,7 +137,7 @@ export const WETH: { [key in ChainId]: Token } = {
   ),
   [ChainId.MOONRIVER]: new Token(
     ChainId.MOONRIVER,
-    '0x98878B06940aE243284CA214f92Bb71a2b032B8A',
+    '0xf50225a84382c74cbdea10b0c176f71fc3de0c4d',
     18,
     'WMOVR',
     'Wrapped MOVR'
@@ -158,7 +158,7 @@ export const WETH: { [key in ChainId]: Token } = {
   ),
   [ChainId.AURORA]: new Token(
     ChainId.AURORA,
-    '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
+    '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB',
     18,
     'WaETH',
     'Wrapped aETH'
