@@ -137,7 +137,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.METIC_TESTNET]: '',
       [ChainId.MOONRIVER]: '0xc35dadb65012ec5796536bd9864ed8773abc74c4',
       [ChainId.MOONBASE_ALPHA]: '',
-      [ChainId.MOONBEAM]: '0x985BcA32293A7A496300a48081947321177a86FD',
+      [ChainId.MOONBEAM]: '0x985bca32293a7a496300a48081947321177a86fd',
       [ChainId.AURORA]: '0x7928d4fea7b2c90c732c10aff59cf403f0c38246',
       [ChainId.AURORA_TESTNET]: ''
     },
@@ -154,10 +154,10 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.FANTOM_TESTNET]: '',
       [ChainId.METIS]: '0x966d65068a6a30f10fd1fa814258637a34e059081d79daa94f3e2b6cec48e810',
       [ChainId.METIC_TESTNET]: '',
-      [ChainId.MOONRIVER]: '',
+      [ChainId.MOONRIVER]: '0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303',
       [ChainId.MOONBASE_ALPHA]: '',
       [ChainId.MOONBEAM]: '0xe31da4209ffcce713230a74b5287fa8ec84797c9e77e1f7cfeccea015cdc97ea',
-      [ChainId.AURORA]: '',
+      [ChainId.AURORA]: '0xa06b8b0642cf6a9298322d0c8ac3c68c291ca24dc66245cf23aa2abc33b57e21',
       [ChainId.AURORA_TESTNET]: ''
     }
   }
