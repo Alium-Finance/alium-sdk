@@ -1,0 +1,62 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+    {
+      "address": "0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3",
+      "chainId": 4,
+      "name": "Alium Token",
+      "symbol": "ALM",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "address": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
+      "chainId": 4,
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/sushiswap/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png"
+    },
+    {
+      "address": "0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63",
+      "chainId": 4,
+      "name": "TETHER",
+      "symbol": "USDT",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "address": "0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11",
+      "chainId": 4,
+      "name": "Pegged BNB",
+      "symbol": "pegBNB",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "address": "0x4D3D711853a4A25AE1D17347a97253A66Ed63D18",
+      "chainId": 4,
+      "name": "Pegged SOL",
+      "symbol": "pegSOL",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "address": "0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78",
+      "chainId": 4,
+      "name": "Pegged DOT",
+      "symbol": "pegDOT",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    }
+  ]
+}

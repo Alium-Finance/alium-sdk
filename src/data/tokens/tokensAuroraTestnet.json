@@ -1,0 +1,30 @@
+{
+	"name": "aliumswap",
+	"timestamp": "2021-03-01T15:41:29.665Z",
+	"version": {
+	  "major": 1,
+	  "minor": 3,
+	  "patch": 1
+	},
+	"tags": {},
+	"logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+	"keywords": ["alium", "default"],
+	"tokens": [
+	  {
+		"name": "Alium Swap",
+		"symbol": "ALM",
+		"address": "0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11",
+		"chainId": 1313161555,
+		"decimals": 18,
+		"logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+	  },
+	  {
+		"name": "Wrapped DEV",
+		"symbol": "WDEV",
+		"address": "0x1041738e7c7696AFc08E3C05401aD504eE647aE4",
+		"chainId": 1313161555,
+		"decimals": 18
+	  }
+	]
+  }
+  

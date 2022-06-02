@@ -1,0 +1,42 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+    {
+      "name": "LINK",
+      "address": "0xfaFedb041c0DD4fA2Dc0d87a6B0979Ee6FA7af5F",
+      "symbol": "LINK",
+      "decimals": 18,
+      "chainId": 4002
+    },
+    {
+      "name": "WFTM",
+      "address": "0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "chainId": 4002
+    },
+    {
+      "name": "ALM",
+      "address": "0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11",
+      "symbol": "ALM",
+      "decimals": 18,
+      "chainId": 4002
+    },
+    {
+      "name": "ALM-bridge",
+      "address": "0x91dC5712460550849a7664A6177B407eEB833d9D",
+      "symbol": "ALM-bridge",
+      "decimals": 18,
+      "chainId": 4002
+    }
+  ]
+}

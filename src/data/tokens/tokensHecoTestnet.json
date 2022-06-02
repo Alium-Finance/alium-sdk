@@ -1,0 +1,78 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+    {
+      "name": "Alium Swap",
+      "symbol": "ALM",
+      "address": "0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63",
+      "chainId": 256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "name": "Alium Swap",
+      "symbol": "ALM-bridge",
+      "address": "0xfe681ad91bbb8b531623a7cb8c658e4afe500fd9",
+      "chainId": 256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "name": "Wrapped Heco",
+      "symbol": "WHT",
+      "address": "0x7aF326B6351C8A9b8fb8CD205CBe11d4Ac5FA836",
+      "chainId": 256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/WHT.png"
+    },
+    {
+      "name": "USDT",
+      "symbol": "USDT",
+      "address": "0x4D3D711853a4A25AE1D17347a97253A66Ed63D18",
+      "chainId": 256,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/USDT.png"
+    },
+    {
+      "name": "DAI",
+      "symbol": "DAI",
+      "address": "0xc73cbC85C8Df0e7b40Cc05f8B82De4a7ae8F8813",
+      "chainId": 256,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/DAI.png"
+    },
+    {
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "address": "0x9a33Ddd074Cd1275DCF6aDe8920675FD8fade75E",
+      "chainId": 256,
+      "decimals": 6,
+      "logoURI": "/images/coint/USDC.png"
+    },
+    {
+      "name": "Wrapped BTC",
+      "symbol": "WBTC",
+      "address": "0x7bA4b2383255b891D51D1702023904dcEf6d952a",
+      "chainId": 256,
+      "decimals": 6,
+      "logoURI": "/images/coint/WBTC.png"
+    },
+    {
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "address": "0x0A81c899EEacf64c5D1EA4418B82Dd6C8E22154d",
+      "chainId": 256,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/UNI.png"
+    }
+  ]
+}

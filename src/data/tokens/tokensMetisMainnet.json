@@ -1,0 +1,155 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+		{
+      "name": "Alium Swap",
+      "symbol": "ALM",
+      "address": "0x1581929770bE3275a82068c1135b6dD59c5334Ed",
+      "chainId": 1088,
+      "decimals": 18
+    },
+    {
+      "symbol": "AAVE",
+      "decimals": 18,
+      "name": "Aave Token",
+      "chainId": 1088,
+      "address": "0x68d97b7a961a5239b9f911da8deb57f6ef6e5e28"
+    },
+    {
+      "symbol": "BNB",
+      "decimals": 18,
+      "name": "Poly-Peg BNB",
+      "chainId": 1088,
+      "address": "0x2692be44a6e38b698731fddf417d060f0d20a0cb"
+    },
+    {
+      "symbol": "BUSD",
+      "decimals": 18,
+      "name": "Poly-Peg BUSD",
+      "chainId": 1088,
+      "address": "0x12d84f1cfe870ca9c9df9785f8954341d7fbb249"
+    },
+    {
+      "symbol": "CAKE",
+      "decimals": 18,
+      "name": "Poly-Peg CAKE",
+      "chainId": 1088,
+      "address": "0x445ea60f4ace3d8794369379e68fa0f76af06b02"
+    },
+    {
+      "symbol": "CRV",
+      "decimals": 18,
+      "name": "Curve DAO Token",
+      "chainId": 1088,
+      "address": "0x87dd4a7ad23b95cd9ff9c26b5cf325905caf8663"
+    },
+    {
+      "symbol": "m.LINK",
+      "decimals": 18,
+      "name": "LINK Token",
+      "chainId": 1088,
+      "address": "0xf5f66d5daa89c090a7afa10e6c1553b2887a9a33"
+    },
+    {
+      "symbol": "m.USDC",
+      "decimals": 6,
+      "name": "USDC Token",
+      "chainId": 1088,
+      "address": "0xea32a96608495e54156ae48931a7c20f0dcc1a21"
+    },
+    {
+      "symbol": "m.USDT",
+      "decimals": 6,
+      "name": "USDT Token",
+      "chainId": 1088,
+      "address": "0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc"
+    },
+    {
+      "symbol": "WMETIS",
+      "decimals": 18,
+      "name": "Wrapped METIS",
+      "chainId": 1088,
+      "address": "0x75cb093e4d61d2a2e65d8e0bbb01de8d89b53481"
+    },
+    {
+      "symbol": "m.WOW",
+      "decimals": 18,
+      "name": "WOW Token",
+      "chainId": 1088,
+      "address": "0x5ce34d9abe4bf239cbc08b89287c87f4cd6d80b7"
+    },
+    {
+      "symbol": "MATIC",
+      "decimals": 18,
+      "name": "Matic Token",
+      "chainId": 1088,
+      "address": "0x4b9d2923d875edf43980bf5ddddede3fb20fc742"
+    },
+    {
+      "symbol": "MINES",
+      "decimals": 18,
+      "name": "Metauce",
+      "chainId": 1088,
+      "address": "0xe9aa15a067b010a4078909bade54f0c6abcbb852"
+    },
+    {
+      "symbol": "NETT",
+      "decimals": 18,
+      "name": "Netswap Token",
+      "chainId": 1088,
+      "address": "0x90fe084f877c65e1b577c7b2ea64b8d8dd1ab278"
+    },
+    {
+      "symbol": "rAVAX",
+      "decimals": 18,
+      "name": "Avalanche Token",
+      "chainId": 1088,
+      "address": "0xe253e0cea0cdd43d9628567d097052b33f98d611"
+    },
+    {
+      "symbol": "RELAY",
+      "decimals": 18,
+      "name": "Relay Token",
+      "chainId": 1088,
+      "address": "0xfe282af5f9eb59c30a3f78789eeffa704188bdd4"
+    },
+    {
+      "symbol": "rFTM",
+      "decimals": 18,
+      "name": "Fantom Token",
+      "chainId": 1088,
+      "address": "0xa9109271abcf0c4106ab7366b4edb34405947eed"
+    },
+    {
+      "symbol": "WBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC",
+      "chainId": 1088,
+      "address": "0xa5b55ab1daf0f8e1efc0eb1931a957fd89b918f4",
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbtc.png"
+    },
+    {
+      "symbol": "WETH",
+      "decimals": 18,
+      "name": "Ether",
+      "chainId": 1088,
+      "address": "0x420000000000000000000000000000000000000a"
+    },
+    {
+      "symbol": "WONE",
+      "decimals": 18,
+      "name": "Wrapped ONE",
+      "chainId": 1088,
+      "address": "0x729de3792a5f810a2e7d7899da74de0d108e7e6b"
+    }
+  ]
+}

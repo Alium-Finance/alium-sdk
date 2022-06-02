@@ -1,0 +1,93 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+    {
+      "name": "Alium Swap",
+      "symbol": "ALM",
+      "address": "0x6f58aCfaEB1BfDC9c4959c43aDdE7a3b63BF019f",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11/logo.png"
+    },
+    {
+      "name": "BUSD-T",
+      "symbol": "BUSD",
+      "address": "0x76130226b1411Ca5511Ff3e58ea81Ec8Bb234C7A",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/USDT.png"
+    },
+    {
+      "name": "XXX1 Swap (Alium Test)",
+      "symbol": "XXX1",
+      "address": "0xB42A8e21f983A56d1e8D1b8f83CE51A9Eb0241FC",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/ETH.png"
+    },
+    {
+      "name": "USDT (ALium Test)",
+      "symbol": "USDT (Test)",
+      "address": "0x1138ebb3101f557b28326a28b6f192c7fecc95f7",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/USDT.png"
+    },
+    {
+      "name": "USDT(Testnet)",
+      "symbol": "USDT(Testnet)",
+      "address": "0xA11c8D9DC9b66E209Ef60F0C8D969D3CD988782c",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/USDT.png"
+    },
+    {
+      "name": "BUSD(Testnet)",
+      "symbol": "BUSD(Testnet)",
+      "address": "0x8301F2213c0eeD49a7E28Ae4c3e91722919B8B47",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/USDT.png"
+    },
+    {
+      "name": "DAI (ALium Test)",
+      "symbol": "DAI (Test)",
+      "address": "0x618549d304828c77dcb590d02e3641b03e6f4176",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/DAI.png"
+    },
+    {
+      "name": "WETH Token (Alium Test)",
+      "symbol": "WETH (Test)",
+      "address": "0x12BE304f9b7a3B624213b5DBaC1822F75E005DAF",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/ETH.png"
+    },
+    {
+      "name": "WBNB Token (Alium Test)",
+      "symbol": "WBNB (Test)",
+      "address": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+      "chainId": 97,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png"
+    },
+    {
+      "name": "Binance-Peg XRP Token",
+      "symbol": "XRP",
+      "address": "0xb120a27927aa5a587d4cbd602f450eb8a97a35d1",
+      "chainId": 97,
+      "decimals": 18
+    }
+  ]
+}

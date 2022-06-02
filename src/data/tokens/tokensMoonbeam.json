@@ -1,0 +1,147 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+		{
+			"symbol": "ALM",
+      "decimals": 18,
+      "name": "Alium Swap",
+      "chainId": 1284,
+      "address": "0x1581929770bE3275a82068c1135b6dD59c5334Ed"
+		},
+    {
+      "symbol": "USDC",
+      "decimals": 6,
+      "name": "USD Coin",
+      "chainId": 1284,
+      "address": "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b"
+    },
+    {
+      "symbol": "BUSD",
+      "decimals": 18,
+      "name": "Binance-Peg BUSD Token",
+      "chainId": 1284,
+      "address": "0xa649325aa7c5093d12d6f98eb4378deae68ce23f"
+    },
+    {
+      "symbol": "WGLMR",
+      "decimals": 18,
+      "name": "Wrapped GLMR",
+      "chainId": 1284,
+      "address": "0xacc15dc74880c9944775448304b263d191c6077f"
+    },
+    {
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "Tether USD",
+      "chainId": 1284,
+      "address": "0xefaeee334f0fd1712f9a8cc375f427d9cdd40d73"
+    },
+    {
+      "symbol": "DAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin",
+      "chainId": 1284,
+      "address": "0x765277eebeca2e31912c9946eae1021199b39c61"
+    },
+    {
+      "symbol": "ETH",
+      "decimals": 18,
+      "name": "Ethereum",
+      "chainId": 1284,
+      "address": "0xfa9343c3897324496a05fc75abed6bac29f8a40f"
+    },
+    {
+      "symbol": "BNB",
+      "decimals": 18,
+      "name": "Binance",
+      "chainId": 1284,
+      "address": "0xc9baa8cfdde8e328787e29b4b078abf2dadc2055"
+    },
+    {
+      "symbol": "GLINT",
+      "decimals": 18,
+      "name": "Beamswap Token",
+      "chainId": 1284,
+      "address": "0xcd3b51d98478d53f4515a306be565c6eebef1d58"
+    },
+    {
+      "symbol": "SHARE",
+      "decimals": 18,
+      "name": "Beamshare Token",
+      "chainId": 1284,
+      "address": "0x4204cad97732282d261fbb7088e07557810a6408"
+    },
+    {
+      "symbol": "FTM",
+      "decimals": 18,
+      "name": "Fantom",
+      "chainId": 1284,
+      "address": "0xc19281f22a075e0f10351cd5d6ea9f0ac63d4327"
+    },
+    {
+      "symbol": "BIFI",
+      "decimals": 18,
+      "name": "beefy.finance",
+      "chainId": 1284,
+      "address": "0x595c8481c48894771ce8fade54ac6bf59093f9e8"
+    },
+    {
+      "symbol": "WBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC",
+      "chainId": 1284,
+      "address": "0x922d641a426dcffaef11680e5358f34d97d112e1"
+    },
+    {
+      "symbol": "DUSTY",
+      "decimals": 18,
+      "name": "DustyDunes Token",
+      "chainId": 1284,
+      "address": "0xf2dc7653a5af3512dd64a7dfb36f7a7ff9c0540d"
+    },
+    {
+      "symbol": "ATOM",
+      "decimals": 9,
+      "name": "ATOM",
+      "chainId": 1284,
+      "address": "0xc7a7a2137ea1930deaf164e316746335d83d2504"
+    },
+    {
+      "symbol": "CGS",
+      "decimals": 18,
+      "name": "Cougar Token",
+      "chainId": 1284,
+      "address": "0x2dfc76901bb2ac2a5fa5fc479590a490bbb10a5f"
+    },
+    {
+      "symbol": "1BEAM",
+      "decimals": 18,
+      "name": "OneBeam",
+      "chainId": 1284,
+      "address": "0x19d2f0cf1fc41de2b8fd4a98065ab9284e05cf29"
+    },
+    {
+      "symbol": "LUNAR",
+      "decimals": 18,
+      "name": "LUNAR Token",
+      "chainId": 1284,
+      "address": "0x28c3971794d95637218aa87159125b070ce69664"
+    },
+    {
+      "symbol": "BEANS",
+      "decimals": 18,
+      "name": "MoonBeans",
+      "chainId": 1284,
+      "address": "0x65b09ef8c5a096c5fd3a80f1f7369e56eb932412"
+    }
+  ]
+}

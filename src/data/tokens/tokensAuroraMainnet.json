@@ -1,0 +1,350 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+		{
+			"name": "Alium Swap",
+			"symbol": "ALM",
+			"address": "0xe8532E5514d9F80C7d0B1F29948873ee59Fb5B06",
+			"chainId": 1313161554,
+			"decimals": 18
+	  },
+    {
+      "symbol": "AURORA",
+      "decimals": 18,
+      "name": "Aurora",
+      "chainId": 1313161554,
+      "address": "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79"
+    },
+    {
+      "symbol": "NEAR",
+      "decimals": 24,
+      "name": "NEAR",
+      "chainId": 1313161554,
+      "address": "0xc42c30ac6cc15fac9bd938618bcaa1a1fae8501d"
+    },
+    {
+      "symbol": "USDC",
+      "decimals": 6,
+      "name": "USD Coin",
+      "chainId": 1313161554,
+      "address": "0xb12bfca5a55806aaf64e99521918a4bf0fc40802"
+    },
+    {
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "Tether USD",
+      "chainId": 1313161554,
+      "address": "0x4988a896b1227218e4a686fde5eabdcabd91571f"
+    },
+    {
+      "symbol": "BNB",
+      "decimals": 18,
+      "name": "Binance",
+      "chainId": 1313161554,
+      "address": "0x2bf9b864cdc97b08b6d79ad4663e71b8ab65c45c"
+    },
+    {
+      "symbol": "AAVE",
+      "decimals": 18,
+      "name": "Aave Token",
+      "chainId": 1313161554,
+      "address": "0x4e834cdcc911605227eedddb89fad336ab9dc00a"
+    },
+    {
+      "symbol": "atLUNA",
+      "decimals": 18,
+      "name": "Luna Terra",
+      "chainId": 1313161554,
+      "address": "0xc4bdd27c33ec7daa6fcfd8532ddb524bf4038096"
+    },
+    {
+      "symbol": "atUST",
+      "decimals": 18,
+      "name": "UST Terra",
+      "chainId": 1313161554,
+      "address": "0x5ce9f0b6afb36135b5ddbf11705ceb65e634a9dc"
+    },
+    {
+      "symbol": "AUSDO",
+      "decimals": 8,
+      "name": "AUSDO",
+      "chainId": 1313161554,
+      "address": "0xccaa4e7e27ba5e351bfc8878d4bee2b05404ea1e"
+    },
+    {
+      "symbol": "AVAX",
+      "decimals": 18,
+      "name": "Avalanche",
+      "chainId": 1313161554,
+      "address": "0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844"
+    },
+    {
+      "symbol": "AVRIT",
+      "decimals": 18,
+      "name": "Avrit fungible token",
+      "chainId": 1313161554,
+      "address": "0xb4530aa877d25e51c18677753acd80ffa54009b2"
+    },
+    {
+      "symbol": "BAL",
+      "decimals": 18,
+      "name": "Balancer",
+      "chainId": 1313161554,
+      "address": "0xb59d0fdaf498182ff19c4e80c00ecfc4470926e2"
+    },
+    {
+      "symbol": "BAT",
+      "decimals": 18,
+      "name": "Basic Attention Token",
+      "chainId": 1313161554,
+      "address": "0x2b9025aecc5ce7a8e6880d3e9c6e458927ecba04"
+    },
+    {
+      "symbol": "BBT",
+      "decimals": 18,
+      "name": "BlueBit Token",
+      "chainId": 1313161554,
+      "address": "0x4148d2ce7816f0ae378d98b40eb3a7211e1fcf0d"
+    },
+    {
+      "symbol": "BIVE",
+      "decimals": 4,
+      "name": "Bizverse",
+      "chainId": 1313161554,
+      "address": "0x130e6203f05805cd8c44093a53c7b50775eb4ca3"
+    },
+    {
+      "symbol": "BSTN",
+      "decimals": 18,
+      "name": "Bastion",
+      "chainId": 1313161554,
+      "address": "0x9f1f933c660a1dc856f0e0fe058435879c5ccef0"
+    },
+    {
+      "symbol": "BUSD",
+      "decimals": 18,
+      "name": "Binance-Peg BUSD Token",
+      "chainId": 1313161554,
+      "address": "0x5d9ab5522c64e1f6ef5e3627eccc093f56167818"
+    },
+    {
+      "symbol": "COMP",
+      "decimals": 18,
+      "name": "Compound",
+      "chainId": 1313161554,
+      "address": "0xdeacf0faa2b80af41470003b5f6cd113d47b4dcd"
+    },
+    {
+      "symbol": "CRF",
+      "decimals": 18,
+      "name": "Crafting Finance",
+      "chainId": 1313161554,
+      "address": "0x026dda7f0f0a2e42163c9c80d2a5b6958e35fc49"
+    },
+    {
+      "symbol": "DAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin",
+      "chainId": 1313161554,
+      "address": "0xe3520349f477a5f6eb06107066048508498a291b"
+    },
+    {
+      "symbol": "DLTA",
+      "decimals": 18,
+      "name": "delta.theta",
+      "chainId": 1313161554,
+      "address": "0xfbd1d8dce2f97bc14239fd507183b98ff1354b39"
+    },
+    {
+      "symbol": "DODO",
+      "decimals": 18,
+      "name": "DODO bird",
+      "chainId": 1313161554,
+      "address": "0xe301ed8c7630c9678c39e4e45193d1e7dfb914f7"
+    },
+    {
+      "symbol": "FAME",
+      "decimals": 18,
+      "name": "FAME",
+      "chainId": 1313161554,
+      "address": "0xd5c997724e4b5756d08e6464c01afbc5f6397236"
+    },
+    {
+      "symbol": "FLX",
+      "decimals": 18,
+      "name": "Flux Token",
+      "chainId": 1313161554,
+      "address": "0xea62791aa682d455614eaa2a12ba3d9a2fd197af"
+    },
+    {
+      "symbol": "FRAX",
+      "decimals": 18,
+      "name": "Frax",
+      "chainId": 1313161554,
+      "address": "0xda2585430fef327ad8ee44af8f1f989a2a91a3d2"
+    },
+    {
+      "symbol": "FTM",
+      "decimals": 18,
+      "name": "Fantom",
+      "chainId": 1313161554,
+      "address": "0xb44a9b6905af7c801311e8f4e76932ee959c663c"
+    },
+    {
+      "symbol": "FXS",
+      "decimals": 18,
+      "name": "Frax Share",
+      "chainId": 1313161554,
+      "address": "0xc8fdd32e0bf33f0396a18209188bb8c6fb8747d2"
+    },
+    {
+      "symbol": "GBA",
+      "decimals": 18,
+      "name": "Golden Banana",
+      "chainId": 1313161554,
+      "address": "0xc2ac78ffddf39e5cd6d83bbd70c1d67517c467ef"
+    },
+    {
+      "symbol": "JUMBO",
+      "decimals": 18,
+      "name": "Jumbo Exchange",
+      "chainId": 1313161554,
+      "address": "0x6454e4a4891c6b78a5a85304d34558dda5f3d6d8"
+    },
+    {
+      "symbol": "KSW",
+      "decimals": 18,
+      "name": "KillSwitchToken",
+      "chainId": 1313161554,
+      "address": "0xe4eb03598f4dcab740331fa432f4b85ff58aa97e"
+    },
+    {
+      "symbol": "LINK",
+      "decimals": 18,
+      "name": "ChainLink Token",
+      "chainId": 1313161554,
+      "address": "0x94190d8ef039c670c6d6b9990142e0ce2a1e3178"
+    },
+    {
+      "symbol": "EMPTY",
+      "decimals": 0,
+      "name": "Empty",
+      "chainId": 1313161554,
+      "address": "0xfca152a9916895bf564e3f26a611f9e1e6aa6e73"
+    },
+    {
+      "symbol": "MATIC",
+      "decimals": 18,
+      "name": "Matic",
+      "chainId": 1313161554,
+      "address": "0x6ab6d61428fde76768d7b45d8bfeec19c6ef91a8"
+    },
+    {
+      "symbol": "SOLACE",
+      "decimals": 18,
+      "name": "solace",
+      "chainId": 1313161554,
+      "address": "0x501ace9c35e60f03a2af4d484f49f9b1efde9f40"
+    },
+    {
+      "symbol": "MECHA",
+      "decimals": 18,
+      "name": "Mecha",
+      "chainId": 1313161554,
+      "address": "0xa33c3b53694419824722c10d99ad7cb16ea62754"
+    },
+    {
+      "symbol": "META",
+      "decimals": 24,
+      "name": "Meta Token",
+      "chainId": 1313161554,
+      "address": "0xc21ff01229e982d7c8b8691163b0a3cb8f357453"
+    },
+    {
+      "symbol": "NECC",
+      "decimals": 9,
+      "name": "Necc",
+      "chainId": 1313161554,
+      "address": "0x6eba841f1201ffdde7ddc2ba995d3308f6c4aea0"
+    },
+    {
+      "symbol": "UNI",
+      "decimals": 18,
+      "name": "Uniswap",
+      "chainId": 1313161554,
+      "address": "0x1bc741235ec0ee86ad488fa49b69bb6c823ee7b7"
+    },
+    {
+      "symbol": "WANNA",
+      "decimals": 18,
+      "name": "WannaSwap",
+      "chainId": 1313161554,
+      "address": "0x7faa64faf54750a2e3ee621166635feaf406ab22"
+    },
+    {
+      "symbol": "WANNAx",
+      "decimals": 18,
+      "name": "WannaX",
+      "chainId": 1313161554,
+      "address": "0x5205c30bf2e37494f8cf77d2c19c6ba4d2778b9b"
+    },
+    {
+      "symbol": "WBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC",
+      "chainId": 1313161554,
+      "address": "0xf4eb217ba2454613b15dbdea6e5f22276410e89e"
+    },
+    {
+      "symbol": "WETH",
+      "decimals": 18,
+      "name": "Wrapped Ether",
+      "chainId": 1313161554,
+      "address": "0xc9bdeed33cd01541e1eed10f90519d2c06fe3feb"
+    },
+    {
+      "symbol": "WNEAR",
+      "decimals": 18,
+      "name": "WNEAR",
+      "chainId": 1313161554,
+      "address": "0x9e0f0ab5fca7d0e5d3fc7b8c06220fd22aa1c6aa"
+    },
+    {
+      "symbol": "XNL",
+      "decimals": 18,
+      "name": "Chronicle",
+      "chainId": 1313161554,
+      "address": "0x7ca1c28663b76cfde424a9494555b94846205585"
+    },
+    {
+      "symbol": "YFI",
+      "decimals": 18,
+      "name": "yearn.finance",
+      "chainId": 1313161554,
+      "address": "0xa64514a8af3ff7366ad3d5daa5a548eefcef85e0"
+    },
+    {
+      "symbol": "BIFI",
+      "decimals": 18,
+      "name": "beefy.finance",
+      "chainId": 1313161554,
+      "address": "0x218c3c3d49d0e7b37aff0d8bb079de36ae61a4c0"
+    },
+    {
+      "symbol": "EMPTY",
+      "decimals": 0,
+      "name": "Empty",
+      "chainId": 1313161554,
+      "address": "0x8973c9ec7b79fe880697cdbca744892682764c37"
+    }
+  ]
+}

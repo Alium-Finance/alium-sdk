@@ -1,0 +1,189 @@
+{
+  "name": "aliumswap",
+  "timestamp": "2021-03-01T15:41:29.665Z",
+  "version": {
+    "major": 1,
+    "minor": 3,
+    "patch": 1
+  },
+  "tags": {},
+  "logoURI": "https://raw.githubusercontent.com/Alium-Finance/tokens-list/main/common/images/wbnb.png",
+  "keywords": ["alium", "default"],
+  "tokens": [
+		{
+      "symbol": "ALM",
+      "decimals": 18,
+      "name": "Alium Swap",
+      "chainId": 1285,
+      "address": "0x1581929770bE3275a82068c1135b6dD59c5334Ed"
+    },
+    {
+      "symbol": "ETH",
+      "decimals": 18,
+      "name": "Ethereum",
+      "chainId": 1285,
+      "address": "0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c"
+    },
+    {
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "Tether USD",
+      "chainId": 1285,
+      "address": "0xb44a9b6905af7c801311e8f4e76932ee959c663c"
+    },
+    {
+      "symbol": "WMOVR",
+      "decimals": 18,
+      "name": "Wrapped MOVR",
+      "chainId": 1285,
+      "address": "0xf50225a84382c74cbdea10b0c176f71fc3de0c4d"
+    },
+    {
+      "symbol": "FRAX",
+      "decimals": 18,
+      "name": "Frax",
+      "chainId": 1285,
+      "address": "0x1a93b23281cc1cde4c4741353f3064709a16197d"
+    },
+    {
+      "symbol": "WBTC.eth",
+      "decimals": 8,
+      "name": "WBTC from Etherem wrapped by passport.meter.io",
+      "chainId": 1285,
+      "address": "0xe6a991ffa8cfe62b0bf6bf72959a3d4f11b2e0f5"
+    },
+    {
+      "symbol": "USDC",
+      "decimals": 6,
+      "name": "USD Coin",
+      "chainId": 1285,
+      "address": "0xe3f5a90f9cb311505cd691a46596599aa1a0ad7d"
+    },
+    {
+      "symbol": "FXS",
+      "decimals": 18,
+      "name": "Frax Share",
+      "chainId": 1285,
+      "address": "0x6f1d1ee50846fcbc3de91723e61cb68cfa6d0e98"
+    },
+    {
+      "symbol": "BUSD",
+      "decimals": 18,
+      "name": "Binance-Peg BUSD Token",
+      "chainId": 1285,
+      "address": "0x5d9ab5522c64e1f6ef5e3627eccc093f56167818"
+    },
+    {
+      "symbol": "DAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin",
+      "chainId": 1285,
+      "address": "0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844"
+    },
+    {
+      "symbol": "SUSHI",
+      "decimals": 18,
+      "name": "SushiToken",
+      "chainId": 1285,
+      "address": "0xf390830df829cf22c53c8840554b98eafc5dcbc2"
+    },
+    {
+      "symbol": "BIFI",
+      "decimals": 18,
+      "name": "beefy.finance",
+      "chainId": 1285,
+      "address": "0x173fd7434b8b50df08e3298f173487ebdb35fd14"
+    },
+    {
+      "symbol": "MIM",
+      "decimals": 18,
+      "name": "Magic Internet Money",
+      "chainId": 1285,
+      "address": "0x0cae51e1032e8461f4806e26332c030e34de3adb"
+    },
+    {
+      "symbol": "LINK",
+      "decimals": 18,
+      "name": "ChainLink Token",
+      "chainId": 1285,
+      "address": "0x0dcb0cb0120d355cde1ce56040be57add0185baa"
+    },
+    {
+      "symbol": "IDIA",
+      "decimals": 18,
+      "name": "Impossible Decentralized Incubator Access Token",
+      "chainId": 1285,
+      "address": "0x2d28aa28fa1e5e6bf121cf688309bf3faaae3c70"
+    },
+    {
+      "symbol": "RIVRSHIB",
+      "decimals": 9,
+      "name": "RIVRSHIBA",
+      "chainId": 1285,
+      "address": "0x3d593056f3e34db7a4720d7f171447c489cfa195"
+    },
+    {
+      "symbol": "RivrDoge",
+      "decimals": 18,
+      "name": "RivrDoge",
+      "chainId": 1285,
+      "address": "0x5d4360f1be94bd6f182f09cfe5ef9832e65eb1ac"
+    },
+    {
+      "symbol": "SOLAR",
+      "decimals": 18,
+      "name": "SolarBeam Token",
+      "chainId": 1285,
+      "address": "0x6bd193ee6d2104f14f94e2ca6efefae561a4334b"
+    },
+    {
+      "symbol": "CWS",
+      "decimals": 18,
+      "name": "Crowns",
+      "chainId": 1285,
+      "address": "0x6fc9651f45b262ae6338a701d563ab118b1ec0ce"
+    },
+    {
+      "symbol": "BEANS",
+      "decimals": 18,
+      "name": "MoonBeans",
+      "chainId": 1285,
+      "address": "0xc2392dd3e3fed2c8ed9f7f0bdf6026fcd1348453"
+    },
+    {
+      "symbol": "POLK",
+      "decimals": 18,
+      "name": "Polkamarkets",
+      "chainId": 1285,
+      "address": "0x8b29344f368b5fa35595325903fe0eaab70c8e1f"
+    },
+    {
+      "symbol": "OCEAN",
+      "decimals": 18,
+      "name": "Ocean Token",
+      "chainId": 1285,
+      "address": "0x99c409e5f62e4bd2ac142f17cafb6810b8f0baae"
+    },
+    {
+      "symbol": "BEPRO",
+      "decimals": 18,
+      "name": "BEPRO Network",
+      "chainId": 1285,
+      "address": "0xcb4a593ce512d78162c58384f0b2fd6e802c2c47"
+    },
+    {
+      "symbol": "ZOOM",
+      "decimals": 18,
+      "name": "ZoomToken",
+      "chainId": 1285,
+      "address": "0x8bd5180ccdd7ae4af832c8c03e21ce8484a128d4"
+    },
+    {
+      "symbol": "aROME",
+      "decimals": 9,
+      "name": "Alpha Rome",
+      "chainId": 1285,
+      "address": "0x3d2d044e8c6dad46b4f7896418d3d4dfaad902be"
+    }
+  ]
+}
