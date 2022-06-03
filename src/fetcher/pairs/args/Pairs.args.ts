@@ -5,4 +5,7 @@ export interface PairsArgs {
   currencyB: Currency
   chainId: ChainId
   networkRpcUrlsList: { [key in ChainId]: string[] }
+  account: string
+  amount: string
+  method: 'bestTradeExactIn' | 'bestTradeExactOut'
 }

@@ -13,8 +13,8 @@ export const Pairshandler = async (args: PairsArgs) => {
   const currencyB = wrappedCurrency(args.currencyB, chainId)
 
   const service = new PairsService(args.networkRpcUrlsList)
-  const account = '0xf420c822e7849A71d06F6aB6c0a4D1A043FAA26E'
-  const amount = '0.0001'
+  const account = args.account
+  const amount = args.amount
 
   const aliumConfig = getExchangeConfig(chainId, 'alium')
   const sideConfig = getExchangeConfig(chainId, 'side')
@@ -22,7 +22,7 @@ export const Pairshandler = async (args: PairsArgs) => {
   try {
     const aliumPairs = await service.findPairs(currencyA, currencyB, chainId, aliumConfig)
     const sidePairs = await service.findPairs(currencyA, currencyB, chainId, sideConfig)
-    const bestTrade = calcTrade('bestTradeExactIn', currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
+    const bestTrade = calcTrade(args.method, currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
     const callData = getSwapCallArguments(bestTrade, chainId, account)
 
     return { aliumPairs, sidePairs, callData }
