@@ -16,4 +16,4 @@ export * from './errors'
 export * from './entities'
 export * from './router'
 export * from './fetcher'
-export * from "./fetcher/pairs"
+export * from './fetcher/pairs'

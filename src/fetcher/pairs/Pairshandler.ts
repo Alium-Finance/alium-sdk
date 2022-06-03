@@ -28,6 +28,7 @@ export const Pairshandler = async (args: PairsArgs) => {
     return { aliumPairs, sidePairs, callData }
   } catch (error) {
     console.error(error)
+    return null
   }
 }
 

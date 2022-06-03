@@ -17,7 +17,7 @@ const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.MOONBASE_ALPHA]: new Currency(18, 'MOVR', 'MOVR'),
   [ChainId.MOONBEAM]: new Currency(18, 'GLMR', 'GLMR'),
   [ChainId.AURORA]: new Currency(18, 'aETH', 'aETH'),
-  [ChainId.AURORA_TESTNET]: new Currency(18, 'aETH', 'aETH'),
+  [ChainId.AURORA_TESTNET]: new Currency(18, 'aETH', 'aETH')
 }
 
 const getEther = (chainId: ChainId) => {

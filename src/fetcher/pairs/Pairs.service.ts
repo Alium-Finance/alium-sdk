@@ -157,14 +157,14 @@ export class PairsService {
   }
 
   // Manage Cache
-  private getReservesState(key: string) {
+  private getReservesState(_key: string) {
     // if (isDev) {
     //   return this.cacheManger.getCache(key) as ReservesState
     // }
     return null
   }
 
-  private setReservesState(arg: ReservesState, key: string) {
+  private setReservesState(_arg: ReservesState, _key: string) {
     // if (isDev) {
     //   this.cacheManger.setCache(key, arg, CacheTTL.FIVE_MINUTES)
     // }
