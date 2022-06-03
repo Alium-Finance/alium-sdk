@@ -8,6 +8,8 @@ import { BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES } from './pairs.constants'
 import { RawPair, Reserves, ReservesState, ReversesStatus } from './types'
 
 export class PairsService {
+  constructor(private readonly networkRpcUrlsList: { [key in ChainId]: string[] }) {}
+
   async findPairs(
     currencyA: Currency,
     currencyB: Currency,
@@ -141,7 +143,7 @@ export class PairsService {
       if (prevReverses && prevReverses?.status === ReversesStatus.EXIST) return prevReverses.reserves
       if (prevReverses && prevReverses?.status === ReversesStatus.FAILURE) return null
 
-      const ethersProvider = getEthersProvider(chainId)
+      const ethersProvider = getEthersProvider(chainId, this.networkRpcUrlsList)
       if (!ethersProvider) return null
       const contract = new Contract(address, new Interface(IPAIR_ABI), ethersProvider)
       const reserves: Reserves = await contract.getReserves()

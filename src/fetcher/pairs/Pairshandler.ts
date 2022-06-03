@@ -12,7 +12,7 @@ export const Pairshandler = async (args: PairsArgs) => {
   const currencyA = wrappedCurrency(args.currencyA, chainId)
   const currencyB = wrappedCurrency(args.currencyB, chainId)
 
-  const service = new PairsService()
+  const service = new PairsService(args.networkRpcUrlsList)
   const account = '0xf420c822e7849A71d06F6aB6c0a4D1A043FAA26E'
   const amount = '0.0001'
 
