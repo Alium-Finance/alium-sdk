@@ -1,7 +1,6 @@
-import DEFAULT_LIST from 'data/tokens'
 import JSBI from 'jsbi'
-import { getListChainIds } from 'utils'
-import { ChainId, Percent, Token, WETH } from '../..'
+import { ChainId, DEFAULT_LIST, Percent, Token, WETH } from '../..'
+import { getListChainIds } from '../../utils'
 
 const isDev = true
 

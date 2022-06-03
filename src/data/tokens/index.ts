@@ -17,7 +17,7 @@ import tokensMoonbase from './tokensMoonbase.json'
 import tokensMoonbeam from './tokensMoonbeam.json'
 import tokensMoonriver from './tokensMoonriver.json'
 
-const DEFAULT_LIST: { [chainId in ChainId]: any } = {
+export const DEFAULT_LIST: { [chainId in ChainId]: any } = {
   [ChainId.MAINNET]: tokensBinanceMainnet,
   [ChainId.BSCTESTNET]: tokensBinanceTestnet,
   [ChainId.HECOMAINNET]: tokensHecoMainnet,
@@ -36,5 +36,3 @@ const DEFAULT_LIST: { [chainId in ChainId]: any } = {
   [ChainId.AURORA]: tokensAuroraMainnet,
   [ChainId.AURORA_TESTNET]: tokensAuroraTestnet
 }
-
-export default DEFAULT_LIST

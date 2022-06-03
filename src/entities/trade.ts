@@ -1,6 +1,6 @@
-import { ONE_BIPS } from 'fetcher/pairs/pairs.constants'
+
 import invariant from 'tiny-invariant'
-import { getEther, InsufficientInputAmountError, InsufficientReservesError } from '..'
+import { getEther, InsufficientInputAmountError, InsufficientReservesError, ONE_BIPS } from '..'
 
 import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'

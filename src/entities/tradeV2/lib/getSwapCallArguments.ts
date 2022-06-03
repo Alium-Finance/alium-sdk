@@ -1,14 +1,22 @@
 import JSBI from 'jsbi'
 import { ChainId, Percent, Router, Trade, TradeType } from '../../..'
-import { BIPS_BASE, DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../pairs.constants'
+import { BIPS_BASE, DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../../../fetcher/pairs/pairs.constants'
 
-export function getSwapCallArguments(
-  trade: Trade | null, // trade to execute, required
-  chainId: ChainId,
-  recipient: string,
-  allowedSlippage: number = INITIAL_ALLOWED_SLIPPAGE, // in bips
-  deadline: number = DEFAULT_DEADLINE_FROM_NOW // in seconds from now
-) {
+export type GetSwapCallArgsParams = {
+  trade: Trade | null // trade to execute, required
+  chainId: ChainId
+  recipient: string
+  allowedSlippage?: number // in bips
+  deadline?: number // in seconds from now
+}
+
+export function getSwapCallArguments({
+  trade,
+  chainId,
+  recipient,
+  allowedSlippage = INITIAL_ALLOWED_SLIPPAGE,
+  deadline = DEFAULT_DEADLINE_FROM_NOW
+}: GetSwapCallArgsParams) {
   if (!trade || !recipient || !chainId) return []
 
   const swapMethods = []
