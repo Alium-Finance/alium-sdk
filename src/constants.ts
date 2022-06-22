@@ -64,7 +64,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONBEAM]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.AURORA]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
       [ChainId.AURORA_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
-      [ChainId.OKC]: '',
+      [ChainId.OKC]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.OKC_TESTNET]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78'
     },
     factory: {
@@ -85,7 +85,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONBEAM]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
       [ChainId.AURORA]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.AURORA_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
-      [ChainId.OKC]: '',
+      [ChainId.OKC]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
       [ChainId.OKC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3'
     },
     initCodeHash: {
@@ -106,7 +106,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONBEAM]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.AURORA]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.AURORA_TESTNET]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
-      [ChainId.OKC]: '',
+      [ChainId.OKC]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
       [ChainId.OKC_TESTNET]: '0x49f163f603c6e7ad015244b682cc0ff6dc637e12aaa0062897293ca0bff1d51f'
     }
   },
@@ -129,7 +129,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONBEAM]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11',
       [ChainId.AURORA]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78',
       [ChainId.AURORA_TESTNET]: '',
-      [ChainId.OKC]: '',
+      [ChainId.OKC]: '0xc3364A27f56b95f4bEB0742a7325D67a04D80942',
       [ChainId.OKC_TESTNET]: ''
     },
     factory: {
@@ -150,7 +150,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONBEAM]: '0x985bca32293a7a496300a48081947321177a86fd',
       [ChainId.AURORA]: '0x7928d4fea7b2c90c732c10aff59cf403f0c38246',
       [ChainId.AURORA_TESTNET]: '',
-      [ChainId.OKC]: '',
+      [ChainId.OKC]: '0x60DCD4a2406Be12dbe3Bb2AaDa12cFb762A418c1',
       [ChainId.OKC_TESTNET]: ''
     },
     initCodeHash: {
@@ -171,7 +171,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONBEAM]: '0xe31da4209ffcce713230a74b5287fa8ec84797c9e77e1f7cfeccea015cdc97ea',
       [ChainId.AURORA]: '0xa06b8b0642cf6a9298322d0c8ac3c68c291ca24dc66245cf23aa2abc33b57e21',
       [ChainId.AURORA_TESTNET]: '',
-      [ChainId.OKC]: '',
+      [ChainId.OKC]: '0x73fce53e0c877f17bc03bb34eead12c2c3f30d3493cff1259744d0c0dfcb3a92',
       [ChainId.OKC_TESTNET]: ''
     }
   }
@@ -195,7 +195,7 @@ export const MULTICALL_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]: '0x83e3b61886770de2F64AAcaD2724ED4f08F7f36B',
   [ChainId.AURORA]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
   [ChainId.AURORA_TESTNET]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
-  [ChainId.OKC]: '',
+  [ChainId.OKC]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
   [ChainId.OKC_TESTNET]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4'
 }
 
@@ -218,7 +218,7 @@ export const LIQUIDITY_MIGRATOR_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.MOONBEAM]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
   [ChainId.AURORA]: '0x8613ecdbd50EFD649EE1D7837E78Fb71ee405240',
   [ChainId.AURORA_TESTNET]: '0x4D3D711853a4A25AE1D17347a97253A66Ed63D18',
-  [ChainId.OKC]: '',
+  [ChainId.OKC]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
   [ChainId.OKC_TESTNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18'
 }
 

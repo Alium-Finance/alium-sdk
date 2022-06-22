@@ -170,7 +170,7 @@ export const WETH: { [key in ChainId]: Token } = {
     'WaETH',
     'Wrapped aETH'
   ),
-  [ChainId.OKC]: new Token(ChainId.OKC, '0x8f8526dbfd6e38e3d8307702ca8469bae6c56c15', 18, 'WOKT', 'Wrapped OKT'),
+  [ChainId.OKC]: new Token(ChainId.OKC, '0x8F8526dbfd6E38E3D8307702cA8469Bae6C56C15', 18, 'WOKT', 'Wrapped OKT'),
   [ChainId.OKC_TESTNET]: new Token(
     ChainId.OKC_TESTNET,
     '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5',
