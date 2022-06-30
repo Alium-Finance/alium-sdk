@@ -2,8 +2,6 @@ import JSBI from 'jsbi'
 import { ChainId, DEFAULT_LIST, Percent, Token, WETH } from '../..'
 import { getListChainIds } from '../../utils'
 
-const isDev = true
-
 // default allowed slippage, in bips
 export const INITIAL_ALLOWED_SLIPPAGE = 80
 // 20 minutes, denominated in seconds
@@ -33,14 +31,13 @@ const WETH_ONLY = getListChainIds().reduce((list, key) => {
   return { ...list, [key]: [WETH[(key as unknown) as ChainId]] }
 }, {}! as ChainTokenList)
 
-export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = isDev
-  ? getListChainIds().reduce((list, key) => {
-      const checkSummedTokens = DEFAULT_LIST[(key as unknown) as ChainId]?.tokens?.map(
-        (token: Token) => new Token(token.chainId, token.address, token.decimals, token.symbol, token.name)
-      )
-      return { ...list, [key]: checkSummedTokens }
-    }, { ...WETH_ONLY }! as ChainTokenList)
-  : { ...WETH_ONLY }
+// used to construct intermediary pairs for trading
+export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = getListChainIds().reduce((list, key) => {
+  const checkSummedTokens: Token[] = DEFAULT_LIST[(key as unknown) as ChainId]?.tokens?.map(
+    (token: any) => new Token(token.chainId, token.address, token.decimals, token.symbol, token.name)
+  )
+  return { ...list, [key]: [...WETH_ONLY[(key as unknown) as ChainId], ...checkSummedTokens] }
+}, {}! as ChainTokenList)
 
 type CustomBases = { [chainId in ChainId]: { [tokenAddress: string]: Token[] } }
 

@@ -1,26 +1,29 @@
-import { wrappedCurrency } from '../..'
+import { JsonRpcProvider } from '@ethersproject/providers'
+import { ChainId, wrappedCurrency } from '../..'
 import { getExchangeConfig } from '../../lib/getExchangeConfig'
 import { PairsArgs } from './args/Pairs.args'
 import { PairsService } from './Pairs.service'
 
+/**
+ * Factory for get pairs by PairsService
+ */
 export class PairsFetcher {
-  constructor() {}
+  constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
 
   async getPairs(args: PairsArgs) {
-    const chainId = args.chainId
-    const currencyA = wrappedCurrency(args.currencyA, chainId)
-    const currencyB = wrappedCurrency(args.currencyB, chainId)
+    const currencyA = wrappedCurrency(args.currencyA, this.chainId)
+    const currencyB = wrappedCurrency(args.currencyB, this.chainId)
 
-    const service = new PairsService(args.networkRpcUrlsList)
+    const service = new PairsService(this.provider, this.chainId)
     const account = args.account
     const amount = args.amount
 
-    const aliumConfig = getExchangeConfig(chainId, 'alium')
-    const sideConfig = getExchangeConfig(chainId, 'side')
+    const aliumConfig = getExchangeConfig(this.chainId, 'alium')
+    const sideConfig = getExchangeConfig(this.chainId, 'side')
 
     try {
-      const aliumPairs = await service.findPairs(currencyA, currencyB, chainId, aliumConfig)
-      const sidePairs = await service.findPairs(currencyA, currencyB, chainId, sideConfig)
+      const aliumPairs = await service.findPairs(currencyA, currencyB, aliumConfig)
+      const sidePairs = await service.findPairs(currencyA, currencyB, sideConfig)
 
       return {
         aliumPairs,
@@ -29,7 +32,7 @@ export class PairsFetcher {
           currencyA,
           currencyB,
           amount,
-          chainId,
+          chainId: this.chainId,
           account
         }
       }

@@ -1,4 +1,3 @@
-
 import invariant from 'tiny-invariant'
 import { getEther, InsufficientInputAmountError, InsufficientReservesError, ONE_BIPS } from '..'
 
@@ -59,15 +58,16 @@ export function inputOutputComparator(a: InputOutput, b: InputOutput): number {
     }
   }
 }
+/**
+ * Changing the contract depending on the price impact
+ * If exist trades, checkout priceImpact and switch.
+ */
+export function hybridComparator(tradeA: Trade | null, tradeB: Trade | null) {
+  const priceImpactFormat = (priceImpactWithoutFee: Percent) => {
+    if (!priceImpactWithoutFee) return null
+    return Number(priceImpactWithoutFee.lessThan(ONE_BIPS) ? '0.01' : `${priceImpactWithoutFee.toFixed(2)}`) || 0
+  }
 
-// ДУБЛИРОВАНИЕ!
-const priceImpactFormat = (priceImpactWithoutFee: Percent) => {
-  if (!priceImpactWithoutFee) return null
-  return Number(priceImpactWithoutFee.lessThan(ONE_BIPS) ? '0.01' : `${priceImpactWithoutFee.toFixed(2)}`) || 0
-}
-
-// ДУБЛИРОВАНИЕ! Не используйте из sdk, совсем другая логика
-export function tradeComparator(tradeA: Trade | null, tradeB: Trade | null) {
   const impactA = (tradeA && priceImpactFormat(tradeA?.priceImpact)) ?? 0
   const impactB = (tradeB && priceImpactFormat(tradeB?.priceImpact)) ?? 0
 
@@ -75,20 +75,14 @@ export function tradeComparator(tradeA: Trade | null, tradeB: Trade | null) {
     const sidePriority = impactA >= 5
     const switchToSide = sidePriority && impactA > impactB
 
-    console.log('%c tradeComparator', 'background: #222; color: #bada55')
-    console.info('(2 trades exist), Switch to', switchToSide ? 'SIDE' : 'MAIN', { impactA, impactB })
-
     return switchToSide ? tradeB : tradeA
   }
-
-  console.log('%c tradeComparator', 'background: #222; color: #bada55')
-  console.info('Switch to', !tradeA ? 'SIDE' : 'MAIN', { impactA, impactB })
 
   return tradeA || tradeB
 }
 
 // extension of the input output comparator that also considers other dimensions of the trade in ranking them
-export function oldTradeComparator(a: Trade, b: Trade) {
+export function singleTradeComparator(a: Trade, b: Trade) {
   const ioComp = inputOutputComparator(a, b)
   if (ioComp !== 0) {
     return ioComp
@@ -361,7 +355,7 @@ export class Trade {
             config
           ),
           maxNumResults,
-          oldTradeComparator
+          singleTradeComparator
         )
       } else if (maxHops > 1 && pairs.length > 1) {
         const pairsExcludingThisPair = pairs.slice(0, i).concat(pairs.slice(i + 1, pairs.length))
@@ -453,7 +447,7 @@ export class Trade {
             config
           ),
           maxNumResults,
-          oldTradeComparator
+          singleTradeComparator
         )
       } else if (maxHops > 1 && pairs.length > 1) {
         const pairsExcludingThisPair = pairs.slice(0, i).concat(pairs.slice(i + 1, pairs.length))

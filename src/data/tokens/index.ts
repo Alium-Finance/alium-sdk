@@ -34,5 +34,7 @@ export const DEFAULT_LIST: { [chainId in ChainId]: any } = {
   [ChainId.MOONBASE_ALPHA]: tokensMoonbase,
   [ChainId.MOONBEAM]: tokensMoonbeam,
   [ChainId.AURORA]: tokensAuroraMainnet,
-  [ChainId.AURORA_TESTNET]: tokensAuroraTestnet
+  [ChainId.AURORA_TESTNET]: tokensAuroraTestnet,
+  [ChainId.OKC]: [],
+  [ChainId.OKC_TESTNET]: []
 }

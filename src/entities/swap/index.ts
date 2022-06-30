@@ -1,34 +1,34 @@
+import { JsonRpcProvider } from '@ethersproject/providers'
+import { ChainId, Pair, PairsArgs, PairsFetcher } from '../..'
 import { getExchangeConfig } from '../../lib/getExchangeConfig'
-import { adapterRawPairs, ChainId, PairsArgs, PairsFetcher, RawPair } from '../..'
-import { Currency } from '../currency'
 import { tryParseAmount } from '../../lib/tryParseAmount'
-import { Trade, tradeComparator } from '../trade'
-import { getSwapCallArguments, GetSwapCallArgsParams } from './lib'
+import { Currency } from '../currency'
+import { Trade, hybridComparator } from '../trade'
+import { GetSwapCallArgsParams, getSwapCallArguments } from './lib'
 
-export type TradeV2Args = Omit<PairsArgs, 'method' | 'networkRpcUrlsList'>
+export type SwapArgs = Omit<PairsArgs, 'method'>
 
-export class TradeV2 {
-  constructor(private readonly networkRpcUrlsList: PairsArgs['networkRpcUrlsList']) {}
+export class Swap {
+  constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
 
-  swapExactIn(args: TradeV2Args) {
+  swapExactIn(args: SwapArgs) {
     return this.swapFactory(args, 'bestTradeExactIn')
   }
 
-  swapExactOut(args: TradeV2Args) {
+  swapExactOut(args: SwapArgs) {
     return this.swapFactory(args, 'bestTradeExactOut')
   }
 
-  private async swapFactory(args: TradeV2Args, method: PairsArgs['method']) {
-    const fetcher = new PairsFetcher()
+  private async swapFactory(args: SwapArgs, method: PairsArgs['method']) {
+    const fetcher = new PairsFetcher(this.provider, this.chainId)
     const result = await fetcher.getPairs({
       ...args,
-      networkRpcUrlsList: this.networkRpcUrlsList,
       method: 'bestTradeExactOut'
     })
     if (result) {
       const { currencyA, currencyB, amount, chainId, account } = result.pairsData
       const { aliumPairs, sidePairs } = result
-      const trade = TradeV2.findBestTrade(method, currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
+      const trade = Swap.findBestTrade(method, currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
       const callData = this.getCallArgument({
         chainId,
         recipient: account,
@@ -44,20 +44,19 @@ export class TradeV2 {
     currencyA: Currency,
     currencyB: Currency,
     amount: string,
-    aliumPairs: RawPair[],
-    sidePairs: RawPair[],
+    aliumPairs: Pair[],
+    sidePairs: Pair[],
     chainId: ChainId
   ) {
     const aliumConfig = getExchangeConfig(chainId, 'alium')
     const sideConfig = getExchangeConfig(chainId, 'side')
     const amountedCurrencyB = tryParseAmount(chainId, amount, currencyB)
 
-    const parsed = adapterRawPairs({ sidePairs, aliumPairs })
     const tradeA =
       (aliumPairs?.length &&
         amountedCurrencyB &&
         Trade[method](
-          parsed.aliumPairs,
+          aliumPairs,
           currencyA,
           amountedCurrencyB,
           { maxHops: 3, maxNumResults: 1 },
@@ -71,7 +70,7 @@ export class TradeV2 {
       (sidePairs?.length &&
         amountedCurrencyB &&
         Trade[method](
-          parsed.sidePairs,
+          sidePairs,
           currencyA,
           amountedCurrencyB,
           { maxHops: 3, maxNumResults: 1 },
@@ -82,7 +81,7 @@ export class TradeV2 {
         )[0]) ||
       null
 
-    return tradeComparator(tradeA, tradeB)
+    return hybridComparator(tradeA, tradeB)
   }
 
   getCallArgument(args: GetSwapCallArgsParams) {
