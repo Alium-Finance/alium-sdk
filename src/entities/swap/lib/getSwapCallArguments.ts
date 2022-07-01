@@ -1,13 +1,15 @@
+import { JsonRpcProvider } from '@ethersproject/providers'
 import JSBI from 'jsbi'
-import { ChainId, Percent, Router, Trade, TradeType } from '../../..'
+import { ChainId, getRouterContract, Percent, Router, Trade, TradeType } from '../../..'
 import { BIPS_BASE, DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../../../fetcher/pairs/pairs.constants'
 
 export type GetSwapCallArgsParams = {
   trade: Trade | null // trade to execute, required
   chainId: ChainId
   recipient: string
-  allowedSlippage?: number // in bips
-  deadline?: number // in seconds from now
+  allowedSlippage: number // in bips
+  deadline: number // in seconds from now
+  provider: JsonRpcProvider
 }
 
 export function getSwapCallArguments({
@@ -15,9 +17,15 @@ export function getSwapCallArguments({
   chainId,
   recipient,
   allowedSlippage = INITIAL_ALLOWED_SLIPPAGE,
-  deadline = DEFAULT_DEADLINE_FROM_NOW
+  deadline = DEFAULT_DEADLINE_FROM_NOW,
+  provider
 }: GetSwapCallArgsParams) {
-  if (!trade || !recipient || !chainId) return []
+  if (!trade || !recipient || !chainId || !provider) return []
+
+  const contract = getRouterContract({
+    address: trade?.config?.router,
+    provider
+  })
 
   const swapMethods = []
 
@@ -51,5 +59,5 @@ export function getSwapCallArguments({
     )
   }
 
-  return swapMethods.map(parameters => ({ parameters }))
+  return swapMethods.map(parameters => ({ parameters, contract }))
 }

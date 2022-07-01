@@ -1,18 +1,42 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
+import { formatEther } from '@ethersproject/units'
+import { BigNumber, Contract } from 'ethers'
 import {
+  calculateGasMargin,
+  calculateGasPrice,
   ChainId,
+  Currency,
+  getExchangeConfig,
+  getRouterContract,
+  hybridComparator,
+  isZero,
   Pair,
   PairsArgs,
   PairsFetcher,
-  Currency,
+  SwapParameters,
   Trade,
-  hybridComparator,
-  getExchangeConfig,
   tryParseAmount
 } from '../..'
 import { GetSwapCallArgsParams, getSwapCallArguments } from './lib'
 
-export type SwapArgs = Omit<PairsArgs, 'method'>
+export type SwapArgs = Omit<PairsArgs, 'method'> & Pick<GetSwapCallArgsParams, 'allowedSlippage' | 'deadline'>
+
+export interface SwapCall {
+  parameters: SwapParameters
+  contract: Contract | null
+}
+
+export interface SuccessfulCall {
+  call: SwapCall
+  gasEstimate: BigNumber
+}
+
+export interface FailedCall {
+  call: SwapCall
+  error: Error
+}
+
+export type EstimatedSwapCall = SuccessfulCall | FailedCall
 
 export class Swap {
   constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
@@ -35,10 +59,13 @@ export class Swap {
       const { currencyA, currencyB, amount, chainId, account } = result.pairsData
       const { aliumPairs, sidePairs } = result
       const trade = Swap.findBestTrade(method, currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
-      const callData = this.getCallArgument({
+      const callData = Swap.getCallArgument({
         chainId,
         recipient: account,
-        trade
+        trade,
+        provider: this.provider,
+        allowedSlippage: args?.allowedSlippage,
+        deadline: args?.deadline
       })
       return { aliumPairs, sidePairs, trade, callData }
     }
@@ -90,7 +117,78 @@ export class Swap {
     return hybridComparator(tradeA, tradeB)
   }
 
-  getCallArgument(args: GetSwapCallArgsParams) {
+  static getCallArgument(args: GetSwapCallArgsParams): SwapCall[] {
     return getSwapCallArguments(args)
+  }
+
+  static estimateCalc(callArgumens: SwapCall[], provider: JsonRpcProvider, routerAddress: string, account: string) {
+    if (!routerAddress || !provider || !account) return null
+
+    const routerContract = getRouterContract({
+      address: routerAddress,
+      provider,
+      account
+    })
+
+    if (!callArgumens?.length || !routerContract) {
+      return null
+    } else {
+      return async () => {
+        const estimatedCalls: EstimatedSwapCall[] = await Promise.all(
+          callArgumens.map(async call => {
+            const {
+              parameters: { methodName, args, value }
+            } = call
+            const options = !value || isZero(value) ? {} : { value }
+
+            try {
+              const gasEstimate = await routerContract.estimateGas[methodName](...args, options)
+              return {
+                call,
+                gasEstimate
+              }
+            } catch (gasError) {
+              console.info('Gas estimate failed, trying eth_call to extract error', call)
+              try {
+                const result = await routerContract.callStatic[methodName](...args, options)
+                console.info('Unexpected successful call after failed estimate gas', call, gasError, result)
+                return { call, error: new Error('Unexpected issue with estimating the gas. Please try again.') }
+              } catch (callError) {
+                console.info('Call threw error', call, callError)
+                let errorMessage: string
+                switch ((callError as any)?.reason) {
+                  case 'UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT':
+                  case 'UniswapV2Router: EXCESSIVE_INPUT_AMOUNT':
+                    errorMessage =
+                      'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.'
+                    break
+                  default:
+                    errorMessage = `The transaction cannot succeed. This is probably caused by overrunning the slippage tolerance or expiring timeout.
+                        Please try again or change these settings in the Settings menu.`
+                }
+                return { call, error: new Error(errorMessage) }
+              }
+            }
+          })
+        )
+
+        // a successful estimation is a bignumber gas estimate and the next call is also a bignumber gas estimate
+        const successfulEstimation = estimatedCalls.find(
+          (el, ix, list): el is SuccessfulCall =>
+            'gasEstimate' in el && (ix === list.length - 1 || 'gasEstimate' in list[ix + 1])
+        )
+
+        if (!successfulEstimation) {
+          const errorCalls = estimatedCalls.filter((call): call is FailedCall => 'error' in call)
+          if (errorCalls.length > 0) throw errorCalls[errorCalls.length - 1].error
+          throw new Error('Unexpected error. Please contact support: none of the calls threw an error')
+        }
+
+        const gasPrice = await calculateGasPrice(routerContract.provider)
+        const transactionFee = formatEther(gasPrice.mul(calculateGasMargin(successfulEstimation.gasEstimate)))
+
+        return { successfulEstimation, transactionFee, gasPrice }
+      }
+    }
   }
 }
