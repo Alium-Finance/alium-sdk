@@ -1,9 +1,15 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { ChainId, Pair, PairsArgs, PairsFetcher } from '../..'
-import { getExchangeConfig } from '../../lib/getExchangeConfig'
-import { tryParseAmount } from '../../lib/tryParseAmount'
-import { Currency } from '../currency'
-import { Trade, hybridComparator } from '../trade'
+import {
+  ChainId,
+  Pair,
+  PairsArgs,
+  PairsFetcher,
+  Currency,
+  Trade,
+  hybridComparator,
+  getExchangeConfig,
+  tryParseAmount
+} from '../..'
 import { GetSwapCallArgsParams, getSwapCallArguments } from './lib'
 
 export type SwapArgs = Omit<PairsArgs, 'method'>

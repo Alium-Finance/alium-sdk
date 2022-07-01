@@ -1,10 +1,11 @@
-import { ChainId, Currency, ExchangeOptions, getTokensList, Pair, TokenAmount } from '../..'
-import { IPAIR_ABI } from '../../data/abis'
+import { ChainId, Currency, ExchangeOptions, getTokensList, IPAIR_ABI, multicall, Pair, TokenAmount } from '../..'
+
 import { PairsFind, Reserves } from './types'
 
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { multicall } from 'lib/multicall'
+
 import { createPairsCombinations } from './lib/createPairsCombinations'
+
 
 /**
  * Search for the liquidity of pairs,data collection of all possible pairs.

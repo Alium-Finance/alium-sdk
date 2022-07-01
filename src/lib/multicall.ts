@@ -1,10 +1,10 @@
 import { Interface } from '@ethersproject/abi'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { MULTICALL_ABI } from 'data/abis'
+
 
 import { Contract } from 'ethers'
 
-import { ChainId, MULTICALL_ADDRESS } from '..'
+import { ChainId, MULTICALL_ABI, MULTICALL_ADDRESS } from '..'
 
 export interface Call {
   address: string // Address of the contract
