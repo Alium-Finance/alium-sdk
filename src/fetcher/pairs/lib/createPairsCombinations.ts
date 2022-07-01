@@ -1,7 +1,7 @@
 import { flatMap, uniqBy } from 'lodash'
 
 import {
-  BASES_TO_CHECK_TRADES_AGAINST,
+  getBasesToCheckTradesAgainst,
   ChainId,
   Currency,
   CUSTOM_BASES,
@@ -9,6 +9,7 @@ import {
   Pair,
   PairsFind,
   Token,
+  TokensResponse,
   wrappedCurrency
 } from '../../..'
 
@@ -16,9 +17,10 @@ export const createPairsCombinations = (
   currencyA: Currency,
   currencyB: Currency,
   config: ExchangeOptions,
-  chainId: ChainId
+  chainId: ChainId,
+  DEFAULT_LIST: TokensResponse['tokens']
 ) => {
-  const bases: Token[] = BASES_TO_CHECK_TRADES_AGAINST[chainId]
+  const bases: Token[] = getBasesToCheckTradesAgainst(DEFAULT_LIST)[chainId]
 
   // All pairs from base tokens
   const basePairs: [Token, Token][] = flatMap(bases, (base): [Token, Token][] =>

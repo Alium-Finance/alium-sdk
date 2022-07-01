@@ -9,10 +9,10 @@ export {
   Rounding,
   TradeType
 } from './constants'
-export * from './data/tokens'
 export * from './entities'
 export * from './errors'
 export * from './fetcher'
 export * from './fetcher/pairs'
+export * from './fetcher/tokens'
 export * from './router'
 export { JSBI }

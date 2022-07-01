@@ -1,4 +1,4 @@
-import { ChainId, Currency, ExchangeOptions, Pair, TokenAmount } from '../..'
+import { ChainId, Currency, ExchangeOptions, getTokensList, Pair, TokenAmount } from '../..'
 import { IPAIR_ABI } from '../../data/abis'
 import { PairsFind, Reserves } from './types'
 
@@ -15,8 +15,9 @@ export class PairsService {
   constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
 
   async findPairs(currencyA: Currency, currencyB: Currency, config: ExchangeOptions) {
+    const defaultList = await getTokensList()
     // Base tokens for building intermediary trading routes
-    const pairs = createPairsCombinations(currencyA, currencyB, config, this.chainId)
+    const pairs = createPairsCombinations(currencyA, currencyB, config, this.chainId, defaultList)
 
     const { pairs: allPairs } = await this.getPairs(pairs, config)
 
@@ -30,7 +31,7 @@ export class PairsService {
     const results = await this.fetchReserves(pairsForFind)
 
     const pairs = results
-      ?.map((result) => {
+      ?.map(result => {
         const { reserves, pair } = result
         const tokenA = pair.tokenA
         const tokenB = pair.tokenB
