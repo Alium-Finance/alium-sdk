@@ -1,5 +1,5 @@
-import { flatMap, uniqBy } from 'lodash'
-
+import uniqBy from 'lodash.uniqby'
+import flatMap from 'lodash.flatmap'
 import {
   getBasesToCheckTradesAgainst,
   ChainId,
