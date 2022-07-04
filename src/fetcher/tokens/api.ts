@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { ALIUM_API } from '../..'
 import { TokensResponse } from './types'
 
@@ -9,19 +10,15 @@ export interface GetTokensListArgs {
 export const getTokensList = async ({ auth, proxy, uri }: GetTokensListArgs) => {
   const baseUrl = uri ? uri : ALIUM_API
   const url = proxy ? `${proxy}/${baseUrl}tokens` : `${baseUrl}tokens`
-  const response = await fetch(
-    url,
-    auth
+  const response = await axios.get<TokensResponse>(url, {
+    headers: auth
       ? {
-          method: 'GET',
-          credentials: 'same-origin',
-          headers: new Headers({
-            Authorization: auth,
-            Origin: baseUrl
-          })
+          Authorization: auth,
+          Origin: baseUrl
         }
       : {}
-  )
-  const result: TokensResponse = await response.json()
+  })
+
+  const result = await response.data
   return result.tokens
 }
