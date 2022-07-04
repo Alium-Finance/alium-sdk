@@ -1,7 +1,7 @@
 {
   "name": "@alium-official/sdk",
   "license": "MIT",
-  "version": "1.1.82",
+  "version": "1.1.83",
   "description": "🛠 An SDK for building applications on top of alium swap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -25,7 +25,7 @@
   "dependencies": {
     "big.js": "^5.2.2",
     "decimal.js-light": "^2.5.0",
-    "ethers": "^5.6.8",
+    "ethers": "^5.4.4",
     "jsbi": "^3.1.1",
     "lodash.flatmap": "^4.5.0",
     "tiny-invariant": "^1.1.0",
