@@ -4,9 +4,11 @@ import { TokensResponse } from './types'
 export interface GetTokensListArgs {
   auth: string
   proxy: string
+  uri?: string
 }
-export const getTokensList = async ({ auth, proxy }: GetTokensListArgs) => {
-  const url = proxy ? `${proxy}/${ALIUM_API}tokens` : `${ALIUM_API}tokens`
+export const getTokensList = async ({ auth, proxy, uri }: GetTokensListArgs) => {
+  const baseUrl = uri ? uri : ALIUM_API
+  const url = proxy ? `${proxy}/${baseUrl}tokens` : `${baseUrl}tokens`
   const response = await fetch(
     url,
     auth
@@ -15,7 +17,7 @@ export const getTokensList = async ({ auth, proxy }: GetTokensListArgs) => {
           credentials: 'same-origin',
           headers: new Headers({
             Authorization: auth,
-            Origin: ALIUM_API
+            Origin: baseUrl
           })
         }
       : {}
