@@ -179,3 +179,121 @@ export const WETH: { [key in ChainId]: Token } = {
     'Wrapped OKT'
   )
 }
+
+export const ALM_TOKENS = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, '0x7c38870e93a1f959cb6c533eb10bbc3e438aac11', 18, 'ALM', 'AliumToken'),
+  [ChainId.BSCTESTNET]: new Token(
+    ChainId.BSCTESTNET,
+    '0x6f58aCfaEB1BfDC9c4959c43aDdE7a3b63BF019f',
+    18,
+    'ALM',
+    'AliumToken'
+  ),
+  [ChainId.HECOMAINNET]: null,
+  [ChainId.HECOTESTNET]: new Token(
+    ChainId.HECOTESTNET,
+    '0xfe681ad91bbb8b531623a7cb8c658e4afe500fd9',
+    18,
+    'ALM',
+    'AliumToken on HECO testnet'
+  ),
+  [ChainId.MATIC_MAINNET]: new Token(
+    ChainId.MATIC_MAINNET,
+    '0x1581929770be3275a82068c1135b6dd59c5334ed',
+    18,
+    'ALM',
+    'AliumToken on Polygon'
+  ),
+  [ChainId.MATIC_TESTNET]: new Token(
+    ChainId.MATIC_TESTNET,
+    '0x58b06772603ad67223bef63ab578f7cb3215771b',
+    18,
+    'ALM',
+    'AliumToken on Polygon'
+  ),
+  [ChainId.ETHER_MAINNET]: new Token(
+    ChainId.ETHER_MAINNET,
+    '0x0Ae055097C6d159879521C384F1D2123D1f195e6',
+    18,
+    'ALM',
+    'AliumToken'
+  ),
+  [ChainId.ETHER_TESTNET]: new Token(
+    ChainId.ETHER_TESTNET,
+    '0x05418f9e8a71a96d9bb58fa6d71533033dc23ac6',
+    18,
+    'ALM',
+    'AliumToken on RINKEBY testnet'
+  ),
+  [ChainId.FANTOM]: new Token(
+    ChainId.FANTOM,
+    '0x38540b4613d2e57ecf190d3486ae6f74591eb8a9',
+    18,
+    'ALM',
+    'AliumToken on Fantom'
+  ),
+  [ChainId.FANTOM_TESTNET]: new Token(
+    ChainId.FANTOM_TESTNET,
+    '0x91dc5712460550849a7664a6177b407eeb833d9d',
+    18,
+    'ALM',
+    'AliumToken on FANTOM testnet'
+  ),
+  [ChainId.METIS]: new Token(
+    ChainId.METIS,
+    '0x1581929770bE3275a82068c1135b6dD59c5334Ed',
+    18,
+    'ALM',
+    'AliumToken on METIS'
+  ),
+  [ChainId.METIC_TESTNET]: new Token(
+    ChainId.METIC_TESTNET,
+    '0x9aB518232d32A0711ecB39F940D107d61e37c5d0',
+    18,
+    'ALM',
+    'AliumToken on METIS testnet'
+  ),
+  [ChainId.MOONRIVER]: new Token(
+    ChainId.MOONRIVER,
+    '0x1581929770be3275a82068c1135b6dd59c5334ed',
+    18,
+    'ALM',
+    'AliumToken on Moonriver'
+  ),
+  [ChainId.MOONBASE_ALPHA]: new Token(
+    ChainId.MOONBASE_ALPHA,
+    '0x8ab7a1fc6bc09e04837f2aa4786cc8cbfc281481',
+    18,
+    'ALM',
+    'AliumToken on Moonriver testnet'
+  ),
+  [ChainId.MOONBEAM]: new Token(
+    ChainId.MOONBEAM,
+    '0x1581929770be3275a82068c1135b6dd59c5334ed',
+    18,
+    'ALM',
+    'AliumToken on Moonbeam'
+  ),
+  [ChainId.AURORA]: new Token(
+    ChainId.AURORA,
+    '0xe8532E5514d9F80C7d0B1F29948873ee59Fb5B06',
+    18,
+    'ALM',
+    'AliumToken on Aurora testnet'
+  ),
+  [ChainId.AURORA_TESTNET]: new Token(
+    ChainId.AURORA_TESTNET,
+    '0x05418f9e8A71A96D9Bb58Fa6D71533033DC23aC6',
+    18,
+    'ALM',
+    'AliumToken on Aurora'
+  ),
+  [ChainId.OKC]: null,
+  [ChainId.OKC_TESTNET]: new Token(
+    ChainId.OKC_TESTNET,
+    '0x1581929770be3275a82068c1135b6dd59c5334ed',
+    18,
+    'ALM',
+    'AliumToken on OKEx'
+  )
+}
