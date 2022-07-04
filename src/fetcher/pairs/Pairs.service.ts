@@ -5,7 +5,7 @@ import { PairsFind, Reserves } from './types'
 import { JsonRpcProvider } from '@ethersproject/providers'
 
 import { createPairsCombinations } from './lib/createPairsCombinations'
-
+import { GetTokensListArgs } from 'fetcher/tokens/api'
 
 /**
  * Search for the liquidity of pairs,data collection of all possible pairs.
@@ -13,10 +13,14 @@ import { createPairsCombinations } from './lib/createPairsCombinations'
  * @constructor chainId - for create pairs and get configs
  */
 export class PairsService {
-  constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
+  constructor(
+    private readonly provider: JsonRpcProvider,
+    private readonly chainId: ChainId,
+    private readonly queryArgs: GetTokensListArgs
+  ) {}
 
   async findPairs(currencyA: Currency, currencyB: Currency, config: ExchangeOptions) {
-    const defaultList = await getTokensList()
+    const defaultList = await getTokensList(this.queryArgs)
     // Base tokens for building intermediary trading routes
     const pairs = createPairsCombinations(currencyA, currencyB, config, this.chainId, defaultList)
 
