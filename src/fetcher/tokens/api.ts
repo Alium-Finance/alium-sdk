@@ -1,6 +1,6 @@
 import { TokensResponse } from './types'
 
-const ALIUM_API = 'http://localhost:3000/api/'
+const ALIUM_API = process.env.ALIUM_API
 
 export const getTokensList = async () => {
   const response = await fetch(ALIUM_API + 'tokens')
