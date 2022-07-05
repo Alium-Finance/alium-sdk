@@ -1,9 +1,7 @@
-import invariant from 'tiny-invariant'
-import warning from 'tiny-warning'
-import JSBI from 'jsbi'
 import { getAddress } from '@ethersproject/address'
-
-import { BigintIsh, ZERO, ONE, TWO, THREE, SolidityType, SOLIDITY_TYPE_MAXIMA } from './constants'
+import JSBI from 'jsbi'
+import invariant from 'tiny-invariant'
+import { BigintIsh, ChainId, ONE, SolidityType, SOLIDITY_TYPE_MAXIMA, THREE, TWO, ZERO } from './constants'
 
 export function validateSolidityTypeInstance(value: JSBI, solidityType: SolidityType): void {
   invariant(JSBI.greaterThanOrEqual(value, ZERO), `${value} is not a ${solidityType}.`)
@@ -14,7 +12,6 @@ export function validateSolidityTypeInstance(value: JSBI, solidityType: Solidity
 export function validateAndParseAddress(address: string): string {
   try {
     const checksummedAddress = getAddress(address)
-    warning(address === checksummedAddress, `${address} is not checksummed.`)
     return checksummedAddress
   } catch (error) {
     invariant(false, `${address} is not a valid address.`)
@@ -79,4 +76,8 @@ export function sortedInsert<T>(items: T[], add: T, maxSize: number, comparator:
     items.splice(lo, 0, add)
     return isFull ? items.pop()! : null
   }
+}
+
+export const getListChainIds = () => {
+  return (Object.keys(ChainId) as Array<keyof typeof ChainId>).filter(key => !!Number(key))
 }

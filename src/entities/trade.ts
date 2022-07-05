@@ -1,8 +1,9 @@
 import invariant from 'tiny-invariant'
-import { getEther, InsufficientInputAmountError, InsufficientReservesError } from '..'
+import { getEther, InsufficientInputAmountError, InsufficientReservesError, ONE_BIPS } from '..'
 
 import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
+import { BASECURRENCIES } from './currencies'
 import { Currency } from './currency'
 import { CurrencyAmount } from './fractions/currencyAmount'
 import { Fraction } from './fractions/fraction'
@@ -57,9 +58,31 @@ export function inputOutputComparator(a: InputOutput, b: InputOutput): number {
     }
   }
 }
+/**
+ * Changing the contract depending on the price impact
+ * If exist trades, checkout priceImpact and switch.
+ */
+export function hybridComparator(tradeA: Trade | null, tradeB: Trade | null) {
+  const priceImpactFormat = (priceImpactWithoutFee: Percent) => {
+    if (!priceImpactWithoutFee) return null
+    return Number(priceImpactWithoutFee.lessThan(ONE_BIPS) ? '0.01' : `${priceImpactWithoutFee.toFixed(2)}`) || 0
+  }
+
+  const impactA = (tradeA && priceImpactFormat(tradeA?.priceImpact)) ?? 0
+  const impactB = (tradeB && priceImpactFormat(tradeB?.priceImpact)) ?? 0
+
+  if (tradeA && tradeB) {
+    const sidePriority = impactA >= 5
+    const switchToSide = sidePriority && impactA > impactB
+
+    return switchToSide ? tradeB : tradeA
+  }
+
+  return tradeA || tradeB
+}
 
 // extension of the input output comparator that also considers other dimensions of the trade in ranking them
-export function tradeComparator(a: Trade, b: Trade) {
+export function singleTradeComparator(a: Trade, b: Trade) {
   const ioComp = inputOutputComparator(a, b)
   if (ioComp !== 0) {
     return ioComp
@@ -96,11 +119,17 @@ function wrappedAmount(currencyAmount: CurrencyAmount, chainId: ChainId): TokenA
   invariant(false, 'CURRENCY')
 }
 
-function wrappedCurrency(currency: Currency, chainId: ChainId): Token {
-  if (currency instanceof Token) return currency
-  if (currency === getEther(chainId)) return WETH[chainId]
-  invariant(false, 'CURRENCY')
+export function wrappedCurrency(currency: Currency | undefined, chainId: ChainId | undefined): Token {
+  const nativeCurrency = chainId && BASECURRENCIES[chainId]
+
+  const isEth = Boolean(currency?.symbol === nativeCurrency?.symbol) || Boolean(currency === nativeCurrency)
+  if (chainId && isEth) {
+    return WETH[chainId]
+  }
+  const rawToken = currency as Token
+  return new Token(chainId!, rawToken?.address || '', rawToken.decimals, rawToken?.symbol || 'unnamed')
 }
+
 /**
  * Config for linking addresses to trade
  */
@@ -315,7 +344,7 @@ export class Trade {
         throw error
       }
       // we have arrived at the output token, so this is the final trade of one of the paths
-      if (amountOut.token.equals(tokenOut)) {
+      if (tokenOut && amountOut.token.equals(tokenOut)) {
         sortedInsert(
           bestTrades,
           new Trade(
@@ -326,7 +355,7 @@ export class Trade {
             config
           ),
           maxNumResults,
-          tradeComparator
+          singleTradeComparator
         )
       } else if (maxHops > 1 && pairs.length > 1) {
         const pairsExcludingThisPair = pairs.slice(0, i).concat(pairs.slice(i + 1, pairs.length))
@@ -407,7 +436,7 @@ export class Trade {
         throw error
       }
       // we have arrived at the input token, so this is the first trade of one of the paths
-      if (amountIn.token.equals(tokenIn)) {
+      if (tokenIn && amountIn.token.equals(tokenIn)) {
         sortedInsert(
           bestTrades,
           new Trade(
@@ -418,7 +447,7 @@ export class Trade {
             config
           ),
           maxNumResults,
-          tradeComparator
+          singleTradeComparator
         )
       } else if (maxHops > 1 && pairs.length > 1) {
         const pairsExcludingThisPair = pairs.slice(0, i).concat(pairs.slice(i + 1, pairs.length))
