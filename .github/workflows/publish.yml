@@ -2,7 +2,7 @@ name: Node.js Package
 on:
   push:
     branches:
-      - feat/5749-swap
+      - master
 
 permissions:
   contents: read
