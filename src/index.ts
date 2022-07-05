@@ -17,6 +17,5 @@ export * from './fetcher/pairs'
 export * from './fetcher/tokens'
 export * from './router'
 export * from './lib'
-export * from './configs/services'
 
 export { JSBI }

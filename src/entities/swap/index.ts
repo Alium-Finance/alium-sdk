@@ -1,7 +1,7 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { formatEther } from '@ethersproject/units'
 import { BigNumber, Contract } from 'ethers'
-import { GetTokensListArgs } from 'fetcher/tokens/api'
+
 import {
   calculateGasMargin,
   calculateGasPrice,
@@ -40,11 +40,7 @@ export interface FailedCall {
 export type EstimatedSwapCall = SuccessfulCall | FailedCall
 
 export class Swap {
-  constructor(
-    private readonly provider: JsonRpcProvider,
-    private readonly chainId: ChainId,
-    private readonly queryArgs: GetTokensListArgs
-  ) {}
+  constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
 
   swapExactIn(args: SwapArgs) {
     return this.swapFactory(args, 'bestTradeExactIn')
@@ -55,7 +51,7 @@ export class Swap {
   }
 
   private async swapFactory(args: SwapArgs, method: PairsArgs['method']) {
-    const fetcher = new PairsFetcher(this.provider, this.chainId, this.queryArgs)
+    const fetcher = new PairsFetcher(this.provider, this.chainId)
     const result = await fetcher.getPairs({
       ...args,
       method: 'bestTradeExactOut'

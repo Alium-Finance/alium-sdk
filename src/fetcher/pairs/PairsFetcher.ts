@@ -1,5 +1,4 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { GetTokensListArgs } from 'fetcher/tokens/api'
 import { ChainId, wrappedCurrency } from '../..'
 import { getExchangeConfig } from '../../lib/getExchangeConfig'
 import { PairsArgs } from './args/Pairs.args'
@@ -9,17 +8,13 @@ import { PairsService } from './Pairs.service'
  * Factory for get pairs by PairsService
  */
 export class PairsFetcher {
-  constructor(
-    private readonly provider: JsonRpcProvider,
-    private readonly chainId: ChainId,
-    private readonly queryArgs: GetTokensListArgs
-  ) {}
+  constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
 
   async getPairs(args: PairsArgs) {
     const currencyA = wrappedCurrency(args.currencyA, this.chainId)
     const currencyB = wrappedCurrency(args.currencyB, this.chainId)
 
-    const service = new PairsService(this.provider, this.chainId, this.queryArgs)
+    const service = new PairsService(this.provider, this.chainId)
     const account = args.account
     const amount = args.amount
 

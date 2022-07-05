@@ -1,11 +1,10 @@
-import { ChainId, Currency, ExchangeOptions, getTokensList, IPAIR_ABI, multicall, Pair, TokenAmount } from '../..'
+import { ChainId, Currency, ExchangeOptions, IPAIR_ABI, multicall, Pair, TokenAmount, TokensService } from '../..'
 
 import { PairsFind, Reserves } from './types'
 
 import { JsonRpcProvider } from '@ethersproject/providers'
 
 import { createPairsCombinations } from './lib/createPairsCombinations'
-import { GetTokensListArgs } from 'fetcher/tokens/api'
 
 /**
  * Search for the liquidity of pairs,data collection of all possible pairs.
@@ -13,14 +12,13 @@ import { GetTokensListArgs } from 'fetcher/tokens/api'
  * @constructor chainId - for create pairs and get configs
  */
 export class PairsService {
-  constructor(
-    private readonly provider: JsonRpcProvider,
-    private readonly chainId: ChainId,
-    private readonly queryArgs: GetTokensListArgs
-  ) {}
+  private readonly tokensService: TokensService
+  constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {
+    this.tokensService = new TokensService()
+  }
 
   async findPairs(currencyA: Currency, currencyB: Currency, config: ExchangeOptions) {
-    const defaultList = await getTokensList(this.queryArgs)
+    const defaultList = await this.tokensService.getTokens()
     // Base tokens for building intermediary trading routes
     const pairs = createPairsCombinations(currencyA, currencyB, config, this.chainId, defaultList)
 
