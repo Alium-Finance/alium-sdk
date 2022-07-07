@@ -57,9 +57,9 @@ export class Swap {
       method: 'bestTradeExactOut'
     })
     if (result) {
-      const { amount, chainId, account } = result.pairsData
+      const { amount, chainId, account, currencyA, currencyB } = result.pairsData
       const { aliumPairs, sidePairs } = result
-      const trade = Swap.findBestTrade(method, args.currencyA, args.currencyB, amount, aliumPairs, sidePairs, chainId)
+      const trade = Swap.findBestTrade(method, currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
       const callData = Swap.getCallArgument({
         chainId,
         recipient: account,
