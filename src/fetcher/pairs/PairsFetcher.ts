@@ -21,24 +21,19 @@ export class PairsFetcher {
     const aliumConfig = getExchangeConfig(this.chainId, 'alium')
     const sideConfig = getExchangeConfig(this.chainId, 'side')
 
-    try {
-      const aliumPairs = await service.findPairs(currencyA, currencyB, aliumConfig)
-      const sidePairs = await service.findPairs(currencyA, currencyB, sideConfig)
+    const aliumPairs = await service.findPairs(currencyA, currencyB, aliumConfig)
+    const sidePairs = await service.findPairs(currencyA, currencyB, sideConfig)
 
-      return {
-        aliumPairs,
-        sidePairs,
-        pairsData: {
-          currencyA,
-          currencyB,
-          amount,
-          chainId: this.chainId,
-          account
-        }
+    return {
+      aliumPairs,
+      sidePairs,
+      pairsData: {
+        currencyA,
+        currencyB,
+        amount,
+        chainId: this.chainId,
+        account
       }
-    } catch (error) {
-      console.error(error)
-      return null
     }
   }
 }
