@@ -213,10 +213,10 @@ export const ALM_TOKENS = {
   ),
   [ChainId.ETHER_MAINNET]: new Token(
     ChainId.ETHER_MAINNET,
-    '0x0Ae055097C6d159879521C384F1D2123D1f195e6',
+    '0x1581929770be3275a82068c1135b6dd59c5334ed',
     18,
     'ALM',
-    'AliumToken'
+    'AliumToken on Ethereum'
   ),
   [ChainId.ETHER_TESTNET]: new Token(
     ChainId.ETHER_TESTNET,
