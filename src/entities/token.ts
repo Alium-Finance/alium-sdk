@@ -288,7 +288,7 @@ export const ALM_TOKENS = {
     'ALM',
     'AliumToken on Aurora'
   ),
-  [ChainId.OKC]: null,
+  [ChainId.OKC]: new Token(ChainId.OKC, '0x5252d84f12942a997387168df6da55ebf827378e', 18, 'ALM', 'AliumToken on OKX'),
   [ChainId.OKC_TESTNET]: new Token(
     ChainId.OKC_TESTNET,
     '0x1581929770be3275a82068c1135b6dd59c5334ed',
