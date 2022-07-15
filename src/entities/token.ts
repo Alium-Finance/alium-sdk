@@ -189,7 +189,13 @@ export const ALM_TOKENS = {
     'ALM',
     'AliumToken'
   ),
-  [ChainId.HECOMAINNET]: null,
+  [ChainId.HECOMAINNET]: new Token(
+    ChainId.HECOMAINNET,
+    '0x1581929770be3275a82068c1135b6dd59c5334ed',
+    18,
+    'ALM',
+    'AliumToken on HECO'
+  ),
   [ChainId.HECOTESTNET]: new Token(
     ChainId.HECOTESTNET,
     '0xfe681ad91bbb8b531623a7cb8c658e4afe500fd9',
