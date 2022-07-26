@@ -52,7 +52,11 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
   } else if (currencyB instanceof Token) {
     return false
   } else {
-    return currencyA === currencyB
+    return (
+      currencyA.decimals === currencyB.decimals &&
+      currencyA.name === currencyB.name &&
+      currencyA.symbol === currencyB.symbol
+    )
   }
 }
 
@@ -177,7 +181,7 @@ export const WETH: { [key in ChainId]: Token } = {
     18,
     'WOKT',
     'Wrapped OKT'
-  )
+  ),
 }
 
 export const ALM_TOKENS = {
@@ -301,5 +305,5 @@ export const ALM_TOKENS = {
     18,
     'ALM',
     'AliumToken on OKEx'
-  )
+  ),
 }
