@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { getEther, InsufficientInputAmountError, InsufficientReservesError, ONE_BIPS } from '..'
+import { getEther, InsufficientInputAmountError, InsufficientReservesError } from '..'
 
 import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
@@ -63,20 +63,19 @@ export function inputOutputComparator(a: InputOutput, b: InputOutput): number {
  * If exist trades, checkout priceImpact and switch.
  */
 export function hybridComparator(tradeA: Trade | null, tradeB: Trade | null) {
-  const priceImpactFormat = (priceImpactWithoutFee: Percent) => {
-    if (!priceImpactWithoutFee) return null
-    return Number(priceImpactWithoutFee.lessThan(ONE_BIPS) ? '0.01' : `${priceImpactWithoutFee.toFixed(2)}`) || 0
-  }
-
-  const impactA = (tradeA && priceImpactFormat(tradeA?.priceImpact)) ?? 0
-  const impactB = (tradeB && priceImpactFormat(tradeB?.priceImpact)) ?? 0
-
   if (tradeA && tradeB) {
-    const sidePriority = impactA >= 5
-    const switchToSide = sidePriority && impactA > impactB
+    const receiveCountA = tradeA?.outputAmount
+    const receiveCountB = tradeB?.outputAmount
+    invariant(
+      true,
+      `COMPARATOR :: can be receive: tradeA - ${receiveCountA?.toSignificant(
+        4
+      )}, tradeB - ${receiveCountB?.toSignificant(4)}`
+    )
 
-    return switchToSide ? tradeB : tradeA
+    return receiveCountA.greaterThan(receiveCountB) || receiveCountA.equalTo(receiveCountB) ? tradeA : tradeB
   }
+  invariant(true, `COMPARATOR ::  chose trade: ${(!!tradeA && 'tradeA') || (!!tradeB && 'tradeB') || 'null'}`)
 
   return tradeA || tradeB
 }

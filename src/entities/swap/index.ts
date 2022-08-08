@@ -20,7 +20,10 @@ import {
 } from '../..'
 import { GetSwapCallArgsParams, getSwapCallArguments } from './lib'
 
-export type SwapArgs = Omit<PairsArgs, 'method'> & Pick<GetSwapCallArgsParams, 'allowedSlippage' | 'deadline'>
+export type SwapArgs = Omit<PairsArgs, 'method'> &
+  Pick<GetSwapCallArgsParams, 'allowedSlippage' | 'deadline'> & {
+    comparator?: 'hybrid' | 'onlyA' | 'onlyB'
+  }
 
 export interface SwapCall {
   parameters: SwapParameters
@@ -54,12 +57,21 @@ export class Swap {
     const fetcher = new PairsFetcher(this.provider, this.chainId)
     const result = await fetcher.getPairs({
       ...args,
-      method: 'bestTradeExactOut'
+      // method: 'bestTradeExactOut'
     })
     if (result) {
       const { amount, chainId, account, currencyA, currencyB } = result.pairsData
       const { aliumPairs, sidePairs } = result
-      const trade = Swap.findBestTrade(method, currencyA, currencyB, amount, aliumPairs, sidePairs, chainId)
+      const trade = Swap.findBestTrade(
+        method,
+        currencyA,
+        currencyB,
+        amount,
+        aliumPairs,
+        sidePairs,
+        chainId,
+        args.comparator
+      )
       const callData = Swap.getCallArgument({
         chainId,
         recipient: account,
@@ -80,7 +92,8 @@ export class Swap {
     amount: string,
     aliumPairs: Pair[],
     sidePairs: Pair[],
-    chainId: ChainId
+    chainId: ChainId,
+    comparator: SwapArgs['comparator'] = 'hybrid'
   ) {
     const aliumConfig = getExchangeConfig(chainId, 'alium')
     const sideConfig = getExchangeConfig(chainId, 'side')
@@ -115,7 +128,14 @@ export class Swap {
         )[0]) ||
       null
 
-    return hybridComparator(tradeA, tradeB)
+    switch (comparator) {
+      case 'hybrid':
+        return hybridComparator(tradeA, tradeB)
+      case 'onlyA':
+        return tradeA
+      case 'onlyB':
+        return tradeB
+    }
   }
 
   static getCallArgument(args: GetSwapCallArgsParams): SwapCall[] {

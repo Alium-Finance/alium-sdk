@@ -10,7 +10,7 @@ import { PairsService } from './Pairs.service'
 export class PairsFetcher {
   constructor(private readonly provider: JsonRpcProvider, private readonly chainId: ChainId) {}
 
-  async getPairs(args: PairsArgs) {
+  async getPairs(args: Omit<PairsArgs, 'method'>) {
     const currencyA = args.currencyA
     const currencyB = args.currencyB
 
