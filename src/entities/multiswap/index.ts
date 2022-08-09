@@ -36,7 +36,8 @@ export class Multiswap {
     } else {
       const tradeToErc20 = await swap.swapExactIn({
         ...args,
-        currencyA: ALM_FOREIGN,
+        currencyA: args?.currencyB,
+        currencyB: ALM_FOREIGN,
         comparator: 'hybrid'
       })
 
