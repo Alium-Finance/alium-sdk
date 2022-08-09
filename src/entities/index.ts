@@ -5,5 +5,6 @@ export * from './trade'
 export * from './currency'
 export * from './currencies'
 export * from './fractions'
-
+export * from './multiswap'
 export * from './swap'
+
