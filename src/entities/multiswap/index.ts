@@ -4,7 +4,7 @@ import { ALM_TOKENS, ChainId, Swap, SwapArgs, WETH, wrappedCurrency } from '../.
 export class Multiswap {
   constructor(private readonly foreignProvider: JsonRpcProvider, private readonly foreignChainId: ChainId) {}
 
-  public async rateForeignChain(args: Omit<SwapArgs, 'currencyA' | 'comparator'>) {
+  public async rateForeignChain(args: Omit<SwapArgs, 'currencyA' | 'comparator'>, multicallAddress: string) {
     const { currencyB } = args
 
     const swap = new Swap(this.foreignProvider, this.foreignChainId)
@@ -16,6 +16,7 @@ export class Multiswap {
       // Calc receive stable token of alm token (only alium liquidity)
       const tradeToStable = await swap.swapExactIn({
         ...args,
+        account: multicallAddress,
         currencyA: STABLE_FOREIGN,
         currencyB: ALM_FOREIGN,
         comparator: 'onlyA'
