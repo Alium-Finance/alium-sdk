@@ -31,7 +31,8 @@ export class Multiswap {
 
       return {
         tradeToStable,
-        tradeToErc20
+        tradeToErc20,
+        targetStable: STABLE_FOREIGN
       }
     } else {
       const tradeToErc20 = await swap.swapExactIn({
@@ -43,7 +44,8 @@ export class Multiswap {
 
       return {
         tradeToStable: null,
-        tradeToErc20
+        tradeToErc20,
+        targetStable: null
       }
     }
   }
