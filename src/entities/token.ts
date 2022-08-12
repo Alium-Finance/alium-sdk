@@ -53,9 +53,9 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
     return false
   } else {
     return (
-      currencyA.decimals === currencyB.decimals &&
-      currencyA.name === currencyB.name &&
-      currencyA.symbol === currencyB.symbol
+      currencyA?.decimals === currencyB?.decimals &&
+      currencyA?.name === currencyB?.name &&
+      currencyA?.symbol === currencyB?.symbol
     )
   }
 }
