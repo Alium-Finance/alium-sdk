@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { getEther, InsufficientInputAmountError, InsufficientReservesError } from '..'
+import { getEther, InsufficientInputAmountError, InsufficientReservesError, JSBI } from '..'
 
 import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
@@ -260,11 +260,17 @@ export class Trade {
     if (this.tradeType === TradeType.EXACT_OUTPUT) {
       return this.outputAmount
     } else {
-      const slippage = useSideContract ? slippageTolerance?.add('20') : slippageTolerance
+      const fullPercent = JSBI.BigInt(100)
+      const percent = JSBI.BigInt(100 - (useSideContract ? 0.2 : 0))
+
       const slippageAdjustedAmountOut = new Fraction(ONE)
-        .add(slippage)
+        .add(slippageTolerance)
         .invert()
-        .multiply(this.outputAmount.raw).quotient
+        .multiply(this.outputAmount.raw)
+        .divide(fullPercent)
+        // derived from the percentage (full - 100, not are full - 98)
+        .multiply(percent).quotient
+
       return this.outputAmount instanceof TokenAmount
         ? new TokenAmount(this.outputAmount.token, slippageAdjustedAmountOut)
         : CurrencyAmount.ether(slippageAdjustedAmountOut, chainId)
