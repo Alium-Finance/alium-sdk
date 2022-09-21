@@ -1,7 +1,15 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { GetSwapCallArgsParams, getSwapCallArguments } from 'entities/swap/lib'
 
-import { ChainId, PairsFetcher, PairsRoutes, SwapCall, Trade, tryParseAmount } from '../..'
+import {
+  ChainId,
+  GetSwapCallArgsParams,
+  getSwapCallArguments,
+  PairsFetcher,
+  PairsRoutes,
+  SwapCall,
+  Trade,
+  tryParseAmount
+} from '../..'
 import { multipleHybridComparator } from './lib/multipleHybridComparator'
 import { DetailedTrade, SwapV2CalculateArgs } from './types'
 
@@ -17,12 +25,7 @@ export class SwapV2 {
     return null
   }
 
-  static rateRoutes(
-    args: SwapV2CalculateArgs,
-    pairsRoutes: PairsRoutes,
-    chainId: ChainId,
-    provider: JsonRpcProvider
-  ) {
+  static rateRoutes(args: SwapV2CalculateArgs, pairsRoutes: PairsRoutes, chainId: ChainId, provider: JsonRpcProvider) {
     const { amount, account, currencyA, currencyB, method } = args
 
     const parsedAmountB = tryParseAmount(chainId, amount, currencyB)
@@ -61,6 +64,11 @@ export class SwapV2 {
   }
 
   static getCallArgument(args: GetSwapCallArgsParams): SwapCall[] {
-    return getSwapCallArguments(args)
+    try {
+      return getSwapCallArguments(args)
+    } catch (error) {
+      console.error(error)
+      return []
+    }
   }
 }

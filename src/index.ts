@@ -11,6 +11,7 @@ export {
 } from './constants'
 export * from './data/abis'
 export * from './entities'
+export * from './entities/swap/lib'
 export * from './errors'
 export * from './fetcher'
 export * from './fetcher/pairs'
