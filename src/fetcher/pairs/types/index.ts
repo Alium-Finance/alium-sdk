@@ -1,4 +1,5 @@
-import { Token } from '../../../'
+import { SwapV2Pairs } from 'entities/swapV2/types'
+import { Pair, Token } from '../../../'
 
 export interface Reserves {
   reserve0: number
@@ -10,4 +11,11 @@ export interface PairsFind {
   address: string
   tokenA: Token
   tokenB: Token
+}
+
+export type PairsRoutes = {
+  [address: string]: {
+    config: SwapV2Pairs[0]
+    pairs: Pair[]
+  }
 }

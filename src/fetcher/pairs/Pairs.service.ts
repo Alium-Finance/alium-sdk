@@ -17,7 +17,7 @@ export class PairsService {
     this.tokensService = new TokensService()
   }
 
-  async findPairs(currencyA: Currency, currencyB: Currency, config: ExchangeOptions) {
+  async findPairs(currencyA: Currency, currencyB: Currency, config: Omit<ExchangeOptions, 'type'>) {
     const defaultList = await this.tokensService.getTokens()
     // Base tokens for building intermediary trading routes
     const pairs = createPairsCombinations(currencyA, currencyB, config, this.chainId, defaultList)
@@ -27,7 +27,7 @@ export class PairsService {
     return allPairs
   }
 
-  private async getPairs(pairsForFind: PairsFind[], config: ExchangeOptions) {
+  private async getPairs(pairsForFind: PairsFind[], config: Omit<ExchangeOptions, 'type'>) {
     const factory = config?.factory
     const initCodeHash = config?.initCodeHash
 
