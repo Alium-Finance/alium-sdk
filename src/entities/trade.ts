@@ -138,6 +138,10 @@ export interface ExchangeOptions {
   factory: string
   initCodeHash: string
   type: keyof ExchangeConfigT
+  details?: {
+    name?: string 
+    logo?: string
+  }
 }
 
 /**
