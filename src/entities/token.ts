@@ -309,7 +309,7 @@ export const ALM_TOKENS = {
   ),
   [ChainId.GOERLI]: new Token(
     ChainId.GOERLI,
-    '',
+    '0x0000000000000000000000000000000000000000',
     18,
     'ALM',
     'AliumToken'
