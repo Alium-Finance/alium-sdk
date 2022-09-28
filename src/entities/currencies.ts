@@ -19,7 +19,9 @@ const BASECURRENCIES: { [key in ChainId]: Currency } = {
   [ChainId.AURORA]: new Currency(18, 'aETH', 'aETH'),
   [ChainId.AURORA_TESTNET]: new Currency(18, 'aETH', 'aETH'),
   [ChainId.OKC]: new Currency(18, 'OKT', 'OKT'),
-  [ChainId.OKC_TESTNET]: new Currency(18, 'OKT', 'OKT')
+  [ChainId.OKC_TESTNET]: new Currency(18, 'OKT', 'OKT'),
+  [ChainId.GOERLI]: new Currency(18, 'grl', 'grl'),
+
 }
 
 const getEther = (chainId: ChainId) => {

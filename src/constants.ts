@@ -4,6 +4,7 @@ import JSBI from 'jsbi'
 export type BigintIsh = JSBI | bigint | string
 
 export enum ChainId {
+  GOERLI = 5,
   MAINNET = 56,
   BSCTESTNET = 97,
   HECOMAINNET = 128,
@@ -65,7 +66,8 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.AURORA]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
       [ChainId.AURORA_TESTNET]: '0x54a472C96b01f8639326D49Ef3eD4B9a78C3ba63',
       [ChainId.OKC]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78',
-      [ChainId.OKC_TESTNET]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78'
+      [ChainId.OKC_TESTNET]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78',
+      [ChainId.GOERLI]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4'
     },
     factory: {
       [ChainId.MAINNET]: '0xbEAC7e750728e865A3cb39D5ED6E3A3044ae4B98',
@@ -86,7 +88,8 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.AURORA]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.AURORA_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
       [ChainId.OKC]: '0x1041738e7c7696AFc08E3C05401aD504eE647aE4',
-      [ChainId.OKC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3'
+      [ChainId.OKC_TESTNET]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3',
+      [ChainId.GOERLI]: '0x3379b4a4Fc0E1614c0687C9F613024E83FE0E8b5'
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x25c1427c313ae5ef5f43f21b21e260f4e278e19616bb3c570e41c050d5b1202a',
@@ -107,7 +110,8 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.AURORA]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.AURORA_TESTNET]: '0x7be43cecea0ffc554436d7b8693e86fa02fa1b05137a23b3ef0970dadad16055',
       [ChainId.OKC]: '0x269cb292c20aa4bea94050b94eab191ae63069a6defc99ff3fd4229fd77faf92',
-      [ChainId.OKC_TESTNET]: '0x49f163f603c6e7ad015244b682cc0ff6dc637e12aaa0062897293ca0bff1d51f'
+      [ChainId.OKC_TESTNET]: '0x49f163f603c6e7ad015244b682cc0ff6dc637e12aaa0062897293ca0bff1d51f',
+      [ChainId.GOERLI]: '0x0b4449168965ab97c5bbb1bbb7b924245af2c9c6d39cbf4cad7b9d3151881804'
     }
   },
   side: {
@@ -130,7 +134,8 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.AURORA]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78',
       [ChainId.AURORA_TESTNET]: '',
       [ChainId.OKC]: '0xc3364A27f56b95f4bEB0742a7325D67a04D80942',
-      [ChainId.OKC_TESTNET]: ''
+      [ChainId.OKC_TESTNET]: '',
+      [ChainId.GOERLI]: ''
     },
     factory: {
       [ChainId.MAINNET]: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73',
@@ -151,7 +156,8 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.AURORA]: '0x7928d4fea7b2c90c732c10aff59cf403f0c38246',
       [ChainId.AURORA_TESTNET]: '',
       [ChainId.OKC]: '0x60DCD4a2406Be12dbe3Bb2AaDa12cFb762A418c1',
-      [ChainId.OKC_TESTNET]: ''
+      [ChainId.OKC_TESTNET]: '',
+      [ChainId.GOERLI]: ''
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5',
@@ -172,7 +178,8 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.AURORA]: '0xa06b8b0642cf6a9298322d0c8ac3c68c291ca24dc66245cf23aa2abc33b57e21',
       [ChainId.AURORA_TESTNET]: '',
       [ChainId.OKC]: '0x73fce53e0c877f17bc03bb34eead12c2c3f30d3493cff1259744d0c0dfcb3a92',
-      [ChainId.OKC_TESTNET]: ''
+      [ChainId.OKC_TESTNET]: '',
+      [ChainId.GOERLI]: ''
     }
   }
 }
@@ -197,6 +204,7 @@ export const MULTICALL_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.AURORA_TESTNET]: '0x8613ecdbd50EFD649EE1D7837E78Fb71ee405240',
   [ChainId.OKC]: '0x4D3D711853a4A25AE1D17347a97253A66Ed63D18',
   [ChainId.OKC_TESTNET]: '0x849A4780B4A292B6Ce1e0fA07eAb533D8d78a009',
+  [ChainId.GOERLI]: '0x6cFe00906a2074F41788b8Dc4fa66a4c13C2A3a3'
 }
 
 // Vampire
@@ -219,7 +227,8 @@ export const LIQUIDITY_MIGRATOR_ADDRESS: { [chainId in ChainId]: string } = {
   [ChainId.AURORA]: '0x8613ecdbd50EFD649EE1D7837E78Fb71ee405240',
   [ChainId.AURORA_TESTNET]: '0x4D3D711853a4A25AE1D17347a97253A66Ed63D18',
   [ChainId.OKC]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
-  [ChainId.OKC_TESTNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18'
+  [ChainId.OKC_TESTNET]: '0x9D35B7afFf83Fd7EA2c9ed16E1C08af27aC07D18',
+  [ChainId.GOERLI]: ''
 }
 
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
