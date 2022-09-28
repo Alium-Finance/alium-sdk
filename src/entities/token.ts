@@ -306,5 +306,12 @@ export const ALM_TOKENS = {
     18,
     'ALM',
     'AliumToken on OKEx'
-  )
+  ),
+  [ChainId.GOERLI]: new Token(
+    ChainId.GOERLI,
+    '',
+    18,
+    'ALM',
+    'AliumToken'
+  ),
 }
