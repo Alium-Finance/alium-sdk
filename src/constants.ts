@@ -127,7 +127,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
       [ChainId.MOONRIVER]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11',
       [ChainId.MOONBASE_ALPHA]: '',
       [ChainId.MOONBEAM]: '0x7C38870e93A1f959cB6c533eB10bBc3e438AaC11',
-      [ChainId.AURORA]: '0xF92dC46c2F373480cbC7Dacb0A003C4a2c23ea78',
+      [ChainId.AURORA]: '0xebabca07ea19c11f7f7ba88b7a6a835edabed9b4',
       [ChainId.AURORA_TESTNET]: '',
       [ChainId.OKC]: '0xc3364A27f56b95f4bEB0742a7325D67a04D80942',
       [ChainId.OKC_TESTNET]: ''
