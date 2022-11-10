@@ -90,7 +90,7 @@ export const EXCHANGE_CONFIG: ExchangeConfigT = {
     },
     initCodeHash: {
       [ChainId.MAINNET]: '0x25c1427c313ae5ef5f43f21b21e260f4e278e19616bb3c570e41c050d5b1202a',
-      [ChainId.BSCTESTNET]: '5a85a3f966d8f25b5af8daf565e03efe882bfb61da9cd0e8f1458dcae9f261e6',
+      [ChainId.BSCTESTNET]: '0x5a85a3f966d8f25b5af8daf565e03efe882bfb61da9cd0e8f1458dcae9f261e6',
       [ChainId.HECOMAINNET]: '0x25c1427c313ae5ef5f43f21b21e260f4e278e19616bb3c570e41c050d5b1202a',
       [ChainId.HECOTESTNET]: '0x26aeaa7c5cd0c5b4696efa6a748e93b2cfa3d3213a34d60caf9c3aa537fff8c2',
       [ChainId.ETHER_MAINNET]: '0xdd99d07028f84ee171febb84ed2cae17b5de5c666e44f5ddc82ddb80596bb266',
