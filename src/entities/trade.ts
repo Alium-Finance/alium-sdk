@@ -261,7 +261,7 @@ export class Trade {
       return this.outputAmount
     } else {
       const fullPercent = JSBI.BigInt(100)
-      const percent = JSBI.BigInt(100 - (useSideContract ? 0.2 : 0))
+      const percent = JSBI.BigInt(100 - (useSideContract ? 2 : 0))
 
       const slippageAdjustedAmountOut = new Fraction(ONE)
         .add(slippageTolerance)
