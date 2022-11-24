@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - feat/6586-cross-swap
 
 permissions:
   contents: read
