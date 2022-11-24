@@ -16,7 +16,7 @@ import {
 export const createPairsCombinations = (
   currencyA: Currency,
   currencyB: Currency,
-  config: ExchangeOptions,
+  config: Omit<ExchangeOptions, 'type'>,
   chainId: ChainId,
   DEFAULT_LIST: TokensResponse['tokens']
 ) => {
@@ -72,7 +72,7 @@ export const createPairsCombinations = (
 
 const createPairsForFind = (
   currencies: [Currency | undefined, Currency | undefined][],
-  config: ExchangeOptions,
+  config: Omit<ExchangeOptions, 'type'>,
   chainId: ChainId
 ) => {
   const factory = config?.factory

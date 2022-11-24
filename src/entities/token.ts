@@ -182,6 +182,7 @@ export const WETH: { [key in ChainId]: Token } = {
     'WOKT',
     'Wrapped OKT'
   ),
+  [ChainId.GOERLI]: new Token(ChainId.GOERLI, '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6', 18, 'wgrl', 'wgrl')
 }
 
 export const ALM_TOKENS = {
@@ -305,5 +306,12 @@ export const ALM_TOKENS = {
     18,
     'ALM',
     'AliumToken on OKEx'
+  ),
+  [ChainId.GOERLI]: new Token(
+    ChainId.GOERLI,
+    '0x0000000000000000000000000000000000000000',
+    18,
+    'ALM',
+    'AliumToken'
   ),
 }
