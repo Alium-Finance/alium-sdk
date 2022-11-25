@@ -1,5 +1,11 @@
 import invariant from 'tiny-invariant'
-import { getEther, InsufficientInputAmountError, InsufficientReservesError, JSBI } from '..'
+import {
+  BLOCKED_PRICE_IMPACT_NON_EXPERT,
+  getEther,
+  InsufficientInputAmountError,
+  InsufficientReservesError,
+  JSBI
+} from '..'
 
 import { ChainId, ExchangeConfigT, ONE, TradeType, ZERO } from '../constants'
 import { sortedInsert } from '../utils'
@@ -58,25 +64,27 @@ export function inputOutputComparator(a: InputOutput, b: InputOutput): number {
     }
   }
 }
+
 /**
  * Changing the contract depending on the price impact
  * If exist trades, checkout priceImpact and switch.
  */
 export function hybridComparator(tradeA: Trade | null, tradeB: Trade | null) {
   if (tradeA && tradeB) {
-    const receiveCountA = tradeA?.outputAmount
-    const receiveCountB = tradeB?.outputAmount
-    invariant(
-      true,
+    const { outputAmount: receiveCountA, priceImpact: priceImpactA } = tradeA
+    const { outputAmount: receiveCountB, priceImpact: priceImpactB } = tradeB
+    const priceImpactTradeBFailure = !priceImpactB?.lessThan(BLOCKED_PRICE_IMPACT_NON_EXPERT)
+    const isTradeAProfit = receiveCountA.greaterThan(receiveCountB) || receiveCountA.equalTo(receiveCountB)
+    console.info(
       `COMPARATOR :: can be receive: tradeA - ${receiveCountA?.toSignificant(
         4
-      )}, tradeB - ${receiveCountB?.toSignificant(4)}`
+      )}, tradeB - ${receiveCountB?.toSignificant(4)} :: priceImpactA - ${priceImpactA?.toSignificant(
+        4
+      )}, priceImpactB - ${priceImpactB.toSignificant(4)}`
     )
-
-    return receiveCountA.greaterThan(receiveCountB) || receiveCountA.equalTo(receiveCountB) ? tradeA : tradeB
+    return !isTradeAProfit && !priceImpactTradeBFailure ? tradeB : tradeA
   }
-  invariant(true, `COMPARATOR ::  chose trade: ${(!!tradeA && 'tradeA') || (!!tradeB && 'tradeB') || 'null'}`)
-
+  console.info(`COMPARATOR ::  chose trade: ${(!!tradeA && 'tradeA') || (!!tradeB && 'tradeB') || 'null'}`)
   return tradeA || tradeB
 }
 
@@ -139,7 +147,7 @@ export interface ExchangeOptions {
   initCodeHash: string
   type: keyof ExchangeConfigT
   details?: {
-    name?: string 
+    name?: string
     logo?: string
   }
 }
