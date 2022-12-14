@@ -73,7 +73,8 @@ export function hybridComparator(tradeA: Trade | null, tradeB: Trade | null) {
   if (tradeA && tradeB) {
     const { outputAmount: receiveCountA, priceImpact: priceImpactA } = tradeA
     const { outputAmount: receiveCountB, priceImpact: priceImpactB } = tradeB
-    const priceImpactTradeBFailure = !priceImpactB?.lessThan(BLOCKED_PRICE_IMPACT_NON_EXPERT)
+    const priceImpAHigh = !priceImpactA?.lessThan(BLOCKED_PRICE_IMPACT_NON_EXPERT)
+    const priceImpBHigh = !priceImpactB?.lessThan(BLOCKED_PRICE_IMPACT_NON_EXPERT)
     const isTradeAProfit = receiveCountA.greaterThan(receiveCountB) || receiveCountA.equalTo(receiveCountB)
     console.info(
       `COMPARATOR :: can be receive: tradeA - ${receiveCountA?.toSignificant(
@@ -82,7 +83,11 @@ export function hybridComparator(tradeA: Trade | null, tradeB: Trade | null) {
         4
       )}, priceImpactB - ${priceImpactB.toSignificant(4)}`
     )
-    return !isTradeAProfit && !priceImpactTradeBFailure ? tradeB : tradeA
+    if (isTradeAProfit) {
+      return priceImpAHigh ? tradeB : tradeA
+    } else {
+      return priceImpBHigh ? tradeA : tradeB
+    }
   }
   console.info(`COMPARATOR ::  chose trade: ${(!!tradeA && 'tradeA') || (!!tradeB && 'tradeB') || 'null'}`)
   return tradeA || tradeB
