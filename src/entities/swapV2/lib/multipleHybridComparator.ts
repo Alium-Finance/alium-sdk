@@ -1,4 +1,5 @@
-import { BLOCKED_PRICE_IMPACT_NON_EXPERT } from 'fetcher/pairs'
+
+import { BLOCKED_PRICE_IMPACT_NON_EXPERT } from '../../../'
 import { maxBy, minBy } from 'lodash'
 import { DetailedTrade } from '../types'
 
