@@ -1,9 +1,16 @@
-import { maxBy } from 'lodash'
+import { BLOCKED_PRICE_IMPACT_NON_EXPERT } from 'fetcher/pairs'
+import { maxBy, minBy } from 'lodash'
 import { DetailedTrade } from '../types'
 
 export function multipleHybridComparator(detailedTrades: DetailedTrade[]) {
-  const bestTrade = maxBy(detailedTrades, detailedTrade => {
+  const bestByReceive = maxBy(detailedTrades, detailedTrade => {
     return detailedTrade?.trade?.outputAmount?.raw
   })
-  return { bestTrade, all: detailedTrades }
+  const priceImactIsHigh = !bestByReceive?.trade?.priceImpact?.lessThan(BLOCKED_PRICE_IMPACT_NON_EXPERT)
+
+  const minByPriceImpact = minBy(detailedTrades, detailedTrade => {
+    return detailedTrade?.trade?.priceImpact?.numerator
+  })
+
+  return { bestTrade: priceImactIsHigh ? minByPriceImpact : bestByReceive, all: detailedTrades }
 }
