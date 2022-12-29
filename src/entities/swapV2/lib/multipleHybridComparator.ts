@@ -1,7 +1,7 @@
 import { BLOCKED_PRICE_IMPACT_NON_EXPERT } from '../../../'
 // import { maxBy, minBy } from 'lodash'
 import { DetailedTrade } from '../types'
-import { maxJSBItBy, minJSBIBy } from 'lib/bigint'
+import { maxJSBItBy, minJSBIBy } from '../../../lib/bigint'
 
 export function multipleHybridComparator(detailedTrades: DetailedTrade[]) {
   const bestByReceive = maxJSBItBy(detailedTrades, detailedTrade => {
